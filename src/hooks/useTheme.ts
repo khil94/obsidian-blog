@@ -2,7 +2,7 @@
 import { changeTheme } from "@/store";
 import { useThemeSelector } from "@/store/useThemeSelector";
 import { ITheme } from "@/style/theme";
-import { getCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
@@ -15,7 +15,7 @@ const useTheme = () => {
       document.documentElement.setAttribute("data-theme", val);
       console.log("inside set theme", val);
       dispatch(changeTheme(val));
-      // setCookie("theme", val);
+      setCookie("theme", val);
     },
     [dispatch]
   );
