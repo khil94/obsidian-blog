@@ -1,7 +1,7 @@
 // contentlayer.config.ts
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
-import highlight from "rehype-highlight";
 import rehypePrettyCode from "rehype-pretty-code";
+import remarkGfm from "remark-gfm";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -42,6 +42,10 @@ const contentSource = makeSource({
   // 마크다운 파일이 저장되어 있는 루트 폴더
   contentDirPath: "posts",
   documentTypes: [Post],
+  mdx: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [[rehypePrettyCode as any, { theme: "github-dark" }]],
+  },
 });
 
 export default contentSource;
