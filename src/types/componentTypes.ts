@@ -30,3 +30,14 @@ export type IWhiteSpace =
   | "break-spaces";
 
 export type ICursor = "default" | "pointer";
+
+export type IAlign = "center" | "start" | "end" | "flex-start" | "flex-end";
+
+export type IJustify =
+  | IAlign
+  | "left"
+  | "right"
+  | "space-between"
+  | "space-around"
+  | "space-evenly"
+  | "center";
