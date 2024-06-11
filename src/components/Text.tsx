@@ -24,10 +24,11 @@ interface ITextProp {
   margin?: string;
   padding?: string;
   cursor?: ICursor;
+  fontWeight?: string;
 }
 
 type ICustomTextProps<T extends ITextElementType> = {
-  tagName: T | undefined;
+  tagName?: T;
 };
 
 type IProp<T extends ITextElementType> = ITextProp &
@@ -56,4 +57,5 @@ const TextComponent = styled.div<ITextProp>`
   padding: ${({ padding }) => padding};
   min-height: ${({ minHeight }) => minHeight};
   background-color: ${({ backgroundColor }) => backgroundColor};
+  font-weight: ${({ fontWeight }) => fontWeight};
 `;
