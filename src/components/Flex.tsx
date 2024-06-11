@@ -1,18 +1,22 @@
+import { IAlign, ICursor, IJustify } from "@/types/componentTypes";
+import { ComponentPropsWithoutRef } from "react";
 import { styled } from "styled-components";
 
-interface IProp extends React.HTMLAttributes<HTMLDivElement> {
+interface IFlexProps {
   width?: string;
   height?: string;
   margin?: string;
   padding?: string;
   borderRadius?: string;
-  cursor?: string;
-  justifyContent?: string;
-  alignItems?: string;
+  cursor?: ICursor;
+  justifyContent?: IJustify;
+  alignItems?: IAlign;
   flexDirection?: string;
   backgroundColor?: string;
   maxWidth?: string;
 }
+
+type IProp = IFlexProps & ComponentPropsWithoutRef<"div">;
 
 export default function Flex({ borderRadius = "6px", ...props }: IProp) {
   return <FlexComp borderRadius={borderRadius} {...props} />;
@@ -25,8 +29,8 @@ const FlexComp = styled.div<IProp>`
   padding: ${({ padding }) => padding};
   cursor: ${({ cursor }) => cursor};
   border-radius: ${({ borderRadius }) => borderRadius};
-  background-color: ${({ backgroundColor }) => backgroundColor};
-  color: ${({ theme }) => theme.palette.text4};
+  background-color: ${({ theme }) => theme.palette.background1};
+  color: ${({ theme }) => theme.palette.text1};
   max-width: ${({ maxWidth }) => maxWidth};
   display: flex;
   flex-direction: ${({ flexDirection }) => flexDirection};
