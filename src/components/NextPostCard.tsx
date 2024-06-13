@@ -6,11 +6,17 @@ import Text from "./Text";
 interface IProp {
   direction: "prev" | "next";
   title: string;
+  id: number;
 }
 
 export default function NextPostCard(props: IProp) {
   return (
-    <PostCardWrapper width="50%" tagName="a" href="/" borderRadius="6px">
+    <PostCardWrapper
+      width="50%"
+      tagName="a"
+      href={`/post/${props.id}`}
+      borderRadius="6px"
+    >
       <Flex width="100%" padding="24px" flexDirection="column">
         <Text fontWeight="bold" fontSize="0.9rem">
           {props.direction === "prev" ? "이전글" : "다음글"}
