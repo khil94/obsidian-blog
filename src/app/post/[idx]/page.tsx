@@ -5,14 +5,15 @@ import NextPostCard from "@/containers/NextPostCard";
 import PostDetail from "@/containers/PostDetail";
 import PostTitle from "@/containers/PostTitle";
 import { allPosts } from "@/contentlayer/generated";
-import useTheme from "@/hooks/useTheme";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
-export default function PostDetailPage({ params }: any) {
-  const idx = parseInt(params.idx);
+export default function PostDetailPage() {
+  const params = useParams();
+  const idx = allPosts.findIndex(
+    (v) => v.id === decodeURIComponent(params.idx as string)
+  );
   const targetPost = allPosts[idx];
-
-  const { toggleTheme } = useTheme();
 
   const prevPost = allPosts[idx - 1];
   const nextPost = allPosts[idx + 1];
@@ -20,11 +21,7 @@ export default function PostDetailPage({ params }: any) {
   function SetPostCard({ direction }: { direction: "prev" | "next" }) {
     const temp = direction === "prev" ? prevPost : nextPost;
     return temp ? (
-      <NextPostCard
-        id={direction === "prev" ? idx - 1 : idx + 1}
-        direction={direction}
-        title={temp.title}
-      />
+      <NextPostCard url={temp.url} direction={direction} title={temp.title} />
     ) : (
       <Flex flex="1" />
     );
@@ -32,7 +29,6 @@ export default function PostDetailPage({ params }: any) {
 
   return (
     <Flex flexDirection="column" alignItems="center">
-      <div onClick={toggleTheme}>detail</div>
       <Flex maxWidth="768px" flexDirection="column" margin="0 auto">
         <PostTitle
           content={targetPost.title}

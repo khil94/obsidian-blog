@@ -7,12 +7,12 @@ import Text from "../components/Text";
 interface IProp {
   direction: "prev" | "next";
   title: string;
-  id: number;
+  url: string;
 }
 
 export default function NextPostCard(props: IProp) {
   return (
-    <PostCardWrapper href={`/post/${props.id}`}>
+    <PostCardWrapper href={props.url}>
       <Flex
         borderRadius="6px"
         width="100%"
