@@ -86,6 +86,7 @@ video {
   font: inherit;
   line-height: 2rem;
   vertical-align: baseline;
+  box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article,
