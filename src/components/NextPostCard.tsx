@@ -25,7 +25,7 @@ export default function NextPostCard(props: IProp) {
 
 const PostCardWrapper = styled(Flex)`
   border: 1px solid ${({ theme }) => theme.palette.border};
-  margin: 1rem auto;
+  margin: 1rem;
   text-decoration: none;
   p,
   h2 {
