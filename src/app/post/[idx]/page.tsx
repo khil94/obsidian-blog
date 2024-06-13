@@ -20,6 +20,15 @@ export default function PostDetailPage({ params }: any) {
   const prevPost = allPosts[params.idx - 1];
   const nextPost = allPosts[params.idx + 1];
 
+  function SetPostCard({ direction }: { direction: "prev" | "next" }) {
+    const temp = direction === "prev" ? prevPost : nextPost;
+    return temp ? (
+      <NextPostCard direction={direction} title={temp.title} />
+    ) : (
+      <Flex flex="1" />
+    );
+  }
+
   return (
     <Flex flexDirection="column" alignItems="center">
       <div onClick={toggleTheme}>detail</div>
@@ -30,15 +39,8 @@ export default function PostDetailPage({ params }: any) {
         />
         <PostDetail code={targetPost.body.code} />
         <Flex justifyContent="space-between">
-          {prevPost && <NextPostCard direction="prev" title={prevPost.title} />}
-          {prevPost && (
-            <NextPostCard
-              direction="next"
-              title={
-                "다음글다음글다음글다음글다음글다음글다음글다음글다음글다음글다음글다음글"
-              }
-            />
-          )}
+          <SetPostCard direction="prev" />
+          <SetPostCard direction="next" />
         </Flex>
       </Flex>
     </Flex>
