@@ -20,7 +20,14 @@ export default function Navbar({ children }: { children?: React.ReactNode }) {
           <Text margin="0 1rem">Zidru's blog</Text>
         </Flex>
       </Link>
-      <Button onClick={toggleTheme}>ON</Button>
+      <Button
+        borderRadius="12px"
+        padding="12px"
+        color="white"
+        onClick={toggleTheme}
+      >
+        Theme
+      </Button>
     </Flex>
   );
 }
