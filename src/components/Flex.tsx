@@ -51,7 +51,8 @@ const FlexComp = styled.div<IFlexProps>`
   padding: ${({ padding }) => padding};
   cursor: ${({ cursor }) => cursor};
   border-radius: ${({ borderRadius }) => borderRadius};
-  background-color: ${({ theme }) => theme.palette.background1};
+  background-color: ${({ backgroundColor, theme }) =>
+    backgroundColor || theme.palette.background1};
   color: ${({ theme }) => theme.palette.text1};
   max-width: ${({ maxWidth }) => maxWidth};
   display: flex;
