@@ -1,4 +1,5 @@
 import makeEllipsis from "@/utils/makeEllipsis";
+import Link from "next/link";
 import { styled } from "styled-components";
 import Flex from "./Flex";
 import Text from "./Text";
@@ -11,12 +12,7 @@ interface IProp {
 
 export default function NextPostCard(props: IProp) {
   return (
-    <PostCardWrapper
-      width="50%"
-      tagName="a"
-      href={`/post/${props.id}`}
-      borderRadius="6px"
-    >
+    <PostCardWrapper href={`/post/${props.id}`}>
       <Flex width="100%" padding="24px" flexDirection="column">
         <Text fontWeight="bold" fontSize="0.9rem">
           {props.direction === "prev" ? "이전글" : "다음글"}
@@ -29,8 +25,10 @@ export default function NextPostCard(props: IProp) {
   );
 }
 
-const PostCardWrapper = styled(Flex)`
+const PostCardWrapper = styled(Link)`
   border: 1px solid ${({ theme }) => theme.palette.border};
+  width: 50%;
+  border-radius: 6px;
   margin: 1rem;
   text-decoration: none;
   p,

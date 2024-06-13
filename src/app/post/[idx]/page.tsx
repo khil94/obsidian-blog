@@ -6,6 +6,7 @@ import PostDetail from "@/components/PostDetail";
 import PostTitle from "@/components/PostTitle";
 import { allPosts } from "@/contentlayer/generated";
 import useTheme from "@/hooks/useTheme";
+import Link from "next/link";
 import { styled } from "styled-components";
 
 export default function PostDetailPage({ params }: any) {
@@ -44,18 +45,18 @@ export default function PostDetailPage({ params }: any) {
           <SetPostCard direction="prev" />
           <SetPostCard direction="next" />
         </Flex>
-        <Button margin="2rem 1rem" width="100%" height="3rem">
-          <Flex
-            tagName="a"
-            href="/"
-            color="white"
-            backgroundColor="inherit"
-            justifyContent="center"
-            width="100%"
-          >
-            목록으로
-          </Flex>
-        </Button>
+        <Link href="/">
+          <Button margin="2rem 1rem" width="100%" height="3rem">
+            <Flex
+              color="white"
+              backgroundColor="inherit"
+              justifyContent="center"
+              width="100%"
+            >
+              목록으로
+            </Flex>
+          </Button>
+        </Link>
       </Flex>
     </PageWrapper>
   );
