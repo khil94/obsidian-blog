@@ -53,7 +53,7 @@ const FlexComp = styled.div<IFlexProps>`
   border-radius: ${({ borderRadius }) => borderRadius};
   background-color: ${({ backgroundColor, theme }) =>
     backgroundColor || theme.palette.background1};
-  color: ${({ theme }) => theme.palette.text1};
+  color: ${({ color, theme }) => color || theme.palette.text1};
   max-width: ${({ maxWidth }) => maxWidth};
   display: flex;
   flex-direction: ${({ flexDirection }) => flexDirection};
