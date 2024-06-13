@@ -143,3 +143,9 @@ pre > code {
 .prose pre {
   scrollbar-width: none;
 }
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}

@@ -7,7 +7,6 @@ import PostTitle from "@/containers/PostTitle";
 import { allPosts } from "@/contentlayer/generated";
 import useTheme from "@/hooks/useTheme";
 import Link from "next/link";
-import { styled } from "styled-components";
 
 export default function PostDetailPage({ params }: any) {
   const idx = parseInt(params.idx);
@@ -32,7 +31,7 @@ export default function PostDetailPage({ params }: any) {
   }
 
   return (
-    <PageWrapper flexDirection="column" alignItems="center">
+    <Flex flexDirection="column" alignItems="center">
       <div onClick={toggleTheme}>detail</div>
       <Flex maxWidth="768px" flexDirection="column" margin="0 auto">
         <PostTitle
@@ -58,16 +57,6 @@ export default function PostDetailPage({ params }: any) {
           </Button>
         </Link>
       </Flex>
-    </PageWrapper>
+    </Flex>
   );
 }
-
-const PageWrapper = styled(Flex)`
-  a {
-    text-decoration: none;
-  }
-`;
-
-const PostP = styled.p`
-  color: ${({ theme }) => theme.palette.border};
-`;

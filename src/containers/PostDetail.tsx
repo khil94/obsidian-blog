@@ -75,7 +75,6 @@ const PostDetailWrapper = styled.div`
   }
 
   a {
-    text-decoration: none;
     font-weight: bold;
     color: ${({ theme }) => theme.palette.main};
     &:visited {

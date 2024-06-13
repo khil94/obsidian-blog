@@ -35,7 +35,6 @@ const PostCardWrapper = styled(Link)`
   width: 50%;
   border-radius: 6px;
   margin: 1rem;
-  text-decoration: none;
   p,
   h2 {
     word-break: break-all;
