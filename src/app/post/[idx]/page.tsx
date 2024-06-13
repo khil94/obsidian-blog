@@ -1,9 +1,9 @@
 "use client";
 import Button from "@/components/Button";
 import Flex from "@/components/Flex";
-import NextPostCard from "@/components/NextPostCard";
-import PostDetail from "@/components/PostDetail";
-import PostTitle from "@/components/PostTitle";
+import NextPostCard from "@/containers/NextPostCard";
+import PostDetail from "@/containers/PostDetail";
+import PostTitle from "@/containers/PostTitle";
 import { allPosts } from "@/contentlayer/generated";
 import useTheme from "@/hooks/useTheme";
 import Link from "next/link";

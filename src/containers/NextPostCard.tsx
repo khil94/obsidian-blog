@@ -1,8 +1,8 @@
 import makeEllipsis from "@/utils/makeEllipsis";
 import Link from "next/link";
 import { styled } from "styled-components";
-import Flex from "./Flex";
-import Text from "./Text";
+import Flex from "../components/Flex";
+import Text from "../components/Text";
 
 interface IProp {
   direction: "prev" | "next";
@@ -13,7 +13,12 @@ interface IProp {
 export default function NextPostCard(props: IProp) {
   return (
     <PostCardWrapper href={`/post/${props.id}`}>
-      <Flex width="100%" padding="24px" flexDirection="column">
+      <Flex
+        borderRadius="6px"
+        width="100%"
+        padding="24px"
+        flexDirection="column"
+      >
         <Text fontWeight="bold" fontSize="0.9rem">
           {props.direction === "prev" ? "이전글" : "다음글"}
         </Text>
