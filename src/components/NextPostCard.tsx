@@ -10,13 +10,13 @@ interface IProp {
 
 export default function NextPostCard(props: IProp) {
   return (
-    <PostCardWrapper tagName="a" href="/" borderRadius="6px">
+    <PostCardWrapper width="50%" tagName="a" href="/" borderRadius="6px">
       <Flex width="100%" padding="24px" flexDirection="column">
         <Text fontWeight="bold" fontSize="0.9rem">
           {props.direction === "prev" ? "이전글" : "다음글"}
         </Text>
         <Text fontWeight="bold" fontSize="1rem" tagName="h2">
-          {makeEllipsis(props.title, 37)}
+          {makeEllipsis(props.title, 19)}
         </Text>
       </Flex>
     </PostCardWrapper>
@@ -26,7 +26,6 @@ export default function NextPostCard(props: IProp) {
 const PostCardWrapper = styled(Flex)`
   border: 1px solid ${({ theme }) => theme.palette.border};
   margin: 1rem auto;
-  flex: 1;
   text-decoration: none;
   p,
   h2 {
