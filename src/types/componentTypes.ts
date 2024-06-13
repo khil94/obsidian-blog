@@ -9,6 +9,16 @@ export type ITextElementType =
   | "h6"
   | "a";
 
+export type IFlexElementType =
+  | "a"
+  | "div"
+  | "section"
+  | "ul"
+  | "article"
+  | "aside"
+  | "header"
+  | "footer";
+
 export type IDisplay =
   | "block"
   | "inline-block"

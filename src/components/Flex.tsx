@@ -1,4 +1,9 @@
-import { IAlign, ICursor, IJustify } from "@/types/componentTypes";
+import {
+  IAlign,
+  ICursor,
+  IFlexElementType,
+  IJustify,
+} from "@/types/componentTypes";
 import { ComponentPropsWithoutRef } from "react";
 import { styled } from "styled-components";
 
@@ -14,15 +19,31 @@ interface IFlexProps {
   flexDirection?: string;
   backgroundColor?: string;
   maxWidth?: string;
+  fontSize?: string;
 }
 
-type IProp = IFlexProps & ComponentPropsWithoutRef<"div">;
+type ICustomFlexProps<T extends IFlexElementType> = {
+  tagName?: T;
+};
+type IProp<T extends IFlexElementType> = IFlexProps &
+  ComponentPropsWithoutRef<T> &
+  ICustomFlexProps<T>;
 
-export default function Flex({ borderRadius = "6px", ...props }: IProp) {
-  return <FlexComp borderRadius={borderRadius} {...props} />;
+export default function Flex<T extends IFlexElementType>({
+  borderRadius = "6px",
+  tagName,
+  ...props
+}: IProp<T>) {
+  return (
+    <FlexComp
+      as={tagName || ("div" as IFlexElementType)}
+      borderRadius={borderRadius}
+      {...props}
+    />
+  );
 }
 
-const FlexComp = styled.div<IProp>`
+const FlexComp = styled.div<IFlexProps>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   margin: ${({ margin }) => margin};
@@ -36,4 +57,5 @@ const FlexComp = styled.div<IProp>`
   flex-direction: ${({ flexDirection }) => flexDirection};
   align-items: ${({ alignItems }) => alignItems};
   justify-content: ${({ justifyContent }) => justifyContent};
+  font-size: ${({ fontSize }) => fontSize};
 `;
