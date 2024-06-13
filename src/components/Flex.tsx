@@ -31,17 +31,10 @@ type IProp<T extends IFlexElementType> = IFlexProps &
   ICustomFlexProps<T>;
 
 export default function Flex<T extends IFlexElementType>({
-  borderRadius = "6px",
   tagName,
   ...props
 }: IProp<T>) {
-  return (
-    <FlexComp
-      as={tagName || ("div" as IFlexElementType)}
-      borderRadius={borderRadius}
-      {...props}
-    />
-  );
+  return <FlexComp as={tagName || ("div" as IFlexElementType)} {...props} />;
 }
 
 const FlexComp = styled.div<IFlexProps>`
