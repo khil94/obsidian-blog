@@ -17,7 +17,8 @@ export type IFlexElementType =
   | "article"
   | "aside"
   | "header"
-  | "footer";
+  | "footer"
+  | "nav";
 
 export type IDisplay =
   | "block"
