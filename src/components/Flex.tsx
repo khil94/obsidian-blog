@@ -20,6 +20,7 @@ interface IFlexProps {
   backgroundColor?: string;
   maxWidth?: string;
   fontSize?: string;
+  flex?: string;
 }
 
 type ICustomFlexProps<T extends IFlexElementType> = {
@@ -58,4 +59,5 @@ const FlexComp = styled.div<IFlexProps>`
   align-items: ${({ alignItems }) => alignItems};
   justify-content: ${({ justifyContent }) => justifyContent};
   font-size: ${({ fontSize }) => fontSize};
+  flex: ${({ flex }) => flex};
 `;
