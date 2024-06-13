@@ -1,12 +1,17 @@
-"use client";
-
-import { themeStore } from "@/store";
-import StyleProvider from "@/style/StyleProvider";
+import GlobalLayout from "@/containers/GlobalLayout";
+import { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Provider } from "react-redux";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "zidru-blog",
+  description: "초보 프론트엔드 개발자의 개발블로그 입니다.",
+  icons: {
+    icon: "/logo.png",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -16,9 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider store={themeStore}>
-          <StyleProvider>{children}</StyleProvider>
-        </Provider>
+        <GlobalLayout>{children}</GlobalLayout>
       </body>
     </html>
   );
