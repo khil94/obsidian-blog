@@ -9,6 +9,7 @@ interface IProp extends React.HTMLAttributes<HTMLButtonElement> {
   cursor?: string;
   border?: string;
   justifyContent?: string;
+  backgroundColor?: string;
 }
 
 export default function Button({
@@ -34,8 +35,9 @@ const Btn = styled.button<IProp>`
   padding: ${({ padding }) => padding};
   cursor: ${({ cursor }) => cursor};
   border-radius: ${({ borderRadius }) => borderRadius};
-  background-color: ${({ theme }) => theme.palette.main};
-  color: ${({ theme }) => theme.palette.text4};
+  background-color: ${({ backgroundColor, theme }) =>
+    backgroundColor || theme.palette.main};
+  color: ${({ color, theme }) => color || theme.palette.text1};
   display: flex;
   align-items: center;
   justify-content: ${({ justifyContent }) => justifyContent};
