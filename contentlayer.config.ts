@@ -36,6 +36,30 @@ export const Post = defineDocumentType(() => ({
       required: true,
     },
   },
+  computedFields: {
+    id: {
+      type: "string",
+      resolve: (post) => {
+        const [_, id] = post._raw.flattenedPath.split("/");
+
+        return id || post._raw.flattenedPath;
+      },
+    },
+    url: {
+      type: "string",
+      resolve: (post) => {
+        const [_, temp] = post._raw.flattenedPath.split("/");
+        return `/post/${temp || post._raw.flattenedPath}`;
+      },
+    },
+    category: {
+      type: "string",
+      resolve: (post) => {
+        const [category, _] = post._raw.flattenedPath.split("/");
+        return category || post._raw.flattenedPath;
+      },
+    },
+  },
 }));
 
 const contentSource = makeSource({
