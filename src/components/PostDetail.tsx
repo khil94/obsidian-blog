@@ -58,6 +58,22 @@ const PostDetailWrapper = styled.div`
     }
   }
 
+  ol,
+  ul {
+    margin: 1rem 0;
+    padding: 2rem;
+    border-radius: 5px;
+    border: ${({ theme }) => `1px solid ${theme.palette.border}`};
+    background-color: ${({ theme }) => theme.palette.background1};
+    list-style-type: inherit;
+  }
+  li {
+    margin-left: 2rem;
+  }
+  ol {
+    list-style-type: decimal;
+  }
+
   a {
     text-decoration: none;
     font-weight: bold;
