@@ -1,0 +1,37 @@
+import { ICursor } from "@/types/componentTypes";
+import Link from "next/link";
+import { ComponentPropsWithoutRef } from "react";
+import { styled } from "styled-components";
+
+interface IAnchorProps {
+  margin?: string;
+  padding?: string;
+  width?: string;
+  height?: string;
+  borderRadius?: string;
+  cursor?: ICursor;
+  backgroundColor?: string;
+  fontSize?: string;
+}
+
+interface ICustomProp {
+  href: string;
+}
+
+type IProp = IAnchorProps & ICustomProp & ComponentPropsWithoutRef<"a">;
+
+export default function Anchor({ href, ...rest }: IProp) {
+  return <LinkAnchor href={href} {...rest} />;
+}
+
+const LinkAnchor = styled(Link)<IAnchorProps>`
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
+  margin: ${({ margin }) => margin};
+  padding: ${({ padding }) => padding};
+  cursor: ${({ cursor }) => cursor};
+  border-radius: ${({ borderRadius }) => borderRadius};
+  background-color: ${({ backgroundColor, theme }) =>
+    backgroundColor || theme.palette.background1};
+  font-size: ${({ fontSize }) => fontSize};
+`;
