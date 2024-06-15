@@ -21,6 +21,7 @@ interface IFlexProps {
   maxWidth?: string;
   fontSize?: string;
   flex?: string;
+  minHeight?: string;
 }
 
 type ICustomFlexProps<T extends IFlexElementType> = {
@@ -54,4 +55,5 @@ const FlexComp = styled.div<IFlexProps>`
   justify-content: ${({ justifyContent }) => justifyContent};
   font-size: ${({ fontSize }) => fontSize};
   flex: ${({ flex }) => flex};
+  min-height: ${({ minHeight }) => minHeight};
 `;
