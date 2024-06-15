@@ -1,7 +1,7 @@
+import Anchor from "@/components/Anchor";
 import Flex from "@/components/Flex";
 import Text from "@/components/Text";
 import { dateToYYYYMMDD } from "@/utils/dateToYYYYMMDD";
-import Link from "next/link";
 import { styled } from "styled-components";
 
 interface IProp {
@@ -20,8 +20,8 @@ export default function PostSummary({
   date,
 }: IProp) {
   return (
-    <Link href={url}>
-      <PostSummaryWrapper borderRadius="8px" margin="1rem auto">
+    <Anchor margin="1rem auto" href={url}>
+      <PostSummaryWrapper borderRadius="8px">
         <img src={thumbnail} alt="thumbnail" />
         <Flex backgroundColor="none" padding="2.4rem" flexDirection="column">
           <Text tagName="h2" fontSize="1.5rem" fontWeight="bold">
@@ -33,7 +33,7 @@ export default function PostSummary({
           <Text>{description}</Text>
         </Flex>
       </PostSummaryWrapper>
-    </Link>
+    </Anchor>
   );
 }
 
