@@ -2,10 +2,15 @@ import Button from "@/components/Button";
 import Flex from "@/components/Flex";
 import Text from "@/components/Text";
 import useTheme from "@/hooks/useTheme";
+import { useThemeSelector } from "@/store/useThemeSelector";
 import Link from "next/link";
+import { styled } from "styled-components";
+import Dark from "../../public/dark.svg";
+import Light from "../../public/light.svg";
 
 export default function Navbar({ children }: { children?: React.ReactNode }) {
   const { toggleTheme } = useTheme();
+  const { theme } = useThemeSelector((v) => v.theme);
 
   return (
     <Flex
@@ -20,14 +25,22 @@ export default function Navbar({ children }: { children?: React.ReactNode }) {
           <Text margin="0 1rem">Zidru's blog</Text>
         </Flex>
       </Link>
-      <Button
+      <ThemeBtn
         borderRadius="12px"
         padding="12px"
         color="white"
         onClick={toggleTheme}
       >
-        Theme
-      </Button>
+        {theme === "dark" ? (
+          <Dark width="32" height="32" fill="white" />
+        ) : (
+          <Light width="32" height="32" />
+        )}
+      </ThemeBtn>
     </Flex>
   );
 }
+
+const ThemeBtn = styled(Button)`
+  background-color: ${({ theme }) => theme.palette.background1};
+`;
