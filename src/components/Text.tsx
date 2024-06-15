@@ -58,4 +58,9 @@ const TextComponent = styled.div<ITextProp>`
   min-height: ${({ minHeight }) => minHeight};
   background-color: ${({ backgroundColor }) => backgroundColor};
   font-weight: ${({ fontWeight }) => fontWeight};
+  text-align: ${({ textAlign }) => textAlign};
+  display: ${({ display }) => display};
+  word-break: ${({ wordBreak }) => wordBreak};
+  white-space: ${({ whiteSpace }) => whiteSpace};
+  cursor: ${({ cursor }) => cursor};
 `;
