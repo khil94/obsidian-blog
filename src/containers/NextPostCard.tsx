@@ -1,5 +1,5 @@
+import Anchor from "@/components/Anchor";
 import makeEllipsis from "@/utils/makeEllipsis";
-import Link from "next/link";
 import { styled } from "styled-components";
 import Flex from "../components/Flex";
 import Text from "../components/Text";
@@ -12,7 +12,12 @@ interface IProp {
 
 export default function NextPostCard(props: IProp) {
   return (
-    <PostCardWrapper href={props.url}>
+    <PostCardWrapper
+      width="50%"
+      borderRadius="6px"
+      margin="1rem"
+      href={props.url}
+    >
       <Flex
         borderRadius="6px"
         width="100%"
@@ -30,11 +35,8 @@ export default function NextPostCard(props: IProp) {
   );
 }
 
-const PostCardWrapper = styled(Link)`
+const PostCardWrapper = styled(Anchor)`
   border: 1px solid ${({ theme }) => theme.palette.border};
-  width: 50%;
-  border-radius: 6px;
-  margin: 1rem;
   p,
   h2 {
     word-break: break-all;

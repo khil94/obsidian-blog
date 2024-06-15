@@ -1,11 +1,11 @@
 "use client";
+import Anchor from "@/components/Anchor";
 import Button from "@/components/Button";
 import Flex from "@/components/Flex";
 import NextPostCard from "@/containers/NextPostCard";
 import PostDetail from "@/containers/PostDetail";
 import PostTitle from "@/containers/PostTitle";
 import { allPosts } from "@/contentlayer/generated";
-import Link from "next/link";
 import { useParams } from "next/navigation";
 
 export default function PostDetailPage() {
@@ -40,7 +40,7 @@ export default function PostDetailPage() {
           <SetPostCard direction="prev" />
           <SetPostCard direction="next" />
         </Flex>
-        <Link href="/">
+        <Anchor href="/">
           <Button margin="2rem 1rem" width="100%" height="3rem">
             <Flex
               color="white"
@@ -51,7 +51,7 @@ export default function PostDetailPage() {
               목록으로
             </Flex>
           </Button>
-        </Link>
+        </Anchor>
       </Flex>
     </Flex>
   );

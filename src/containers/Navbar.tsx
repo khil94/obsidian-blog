@@ -1,9 +1,9 @@
+import Anchor from "@/components/Anchor";
 import Button from "@/components/Button";
 import Flex from "@/components/Flex";
 import Text from "@/components/Text";
 import useTheme from "@/hooks/useTheme";
 import { useThemeSelector } from "@/store/useThemeSelector";
-import Link from "next/link";
 import { styled } from "styled-components";
 import Dark from "../../public/dark.svg";
 import Light from "../../public/light.svg";
@@ -19,12 +19,12 @@ export default function Navbar({ children }: { children?: React.ReactNode }) {
       alignItems="center"
       tagName="nav"
     >
-      <Link href="/">
+      <Anchor href="/">
         <Flex>
           <img width={36} src="/logo.png" alt="logo" />
           <Text margin="0 1rem">Zidru's blog</Text>
         </Flex>
-      </Link>
+      </Anchor>
       <ThemeBtn
         borderRadius="12px"
         padding="12px"
