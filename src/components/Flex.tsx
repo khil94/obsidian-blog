@@ -45,9 +45,8 @@ const FlexComp = styled.div<IFlexProps>`
   padding: ${({ padding }) => padding};
   cursor: ${({ cursor }) => cursor};
   border-radius: ${({ borderRadius }) => borderRadius};
-  background-color: ${({ backgroundColor, theme }) =>
-    backgroundColor || theme.palette.background1};
-  color: ${({ color, theme }) => color || theme.palette.text1};
+  background-color: ${({ backgroundColor }) => backgroundColor};
+  color: ${({ color }) => color};
   max-width: ${({ maxWidth }) => maxWidth};
   display: flex;
   flex-direction: ${({ flexDirection }) => flexDirection};
