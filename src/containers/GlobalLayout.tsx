@@ -1,5 +1,6 @@
 "use client";
 
+import Flex from "@/components/Flex";
 import { themeStore } from "@/store";
 import StyleProvider from "@/style/StyleProvider";
 import { Provider } from "react-redux";
@@ -14,7 +15,7 @@ export default function GlobalLayout({
     <Provider store={themeStore}>
       <StyleProvider>
         <Navbar />
-        {children}
+        <Flex justifyContent="center">{children}</Flex>
       </StyleProvider>
     </Provider>
   );
