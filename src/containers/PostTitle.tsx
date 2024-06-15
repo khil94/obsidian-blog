@@ -7,10 +7,10 @@ import Text from "../components/Text";
 interface Iprop {
   content: string;
   createdAt: string;
-  categories: string;
+  tags: string;
 }
-export default function PostTitle({ content, createdAt, categories }: Iprop) {
-  const categoryList = categories.split(",").map((v) => v.trim());
+export default function PostTitle({ content, createdAt, tags }: Iprop) {
+  const categoryList = tags.split(",").map((v) => v.trim());
   console.log("category list : ", categoryList);
   return (
     <PostTitleWrapper

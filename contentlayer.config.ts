@@ -23,7 +23,7 @@ export const Post = defineDocumentType(() => ({
       type: "string",
       required: true,
     },
-    category: {
+    tags: {
       type: "string",
       required: true,
     },

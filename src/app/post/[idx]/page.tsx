@@ -33,7 +33,7 @@ export default function PostDetailPage() {
         <PostTitle
           content={targetPost.title}
           createdAt={targetPost.createdAt}
-          categories={targetPost.category}
+          tags={targetPost.tags}
         />
         <PostDetail code={targetPost.body.code} />
         <Flex justifyContent="space-between">
