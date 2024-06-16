@@ -4,6 +4,7 @@ import Flex from "@/components/Flex";
 import { themeStore } from "@/store";
 import StyleProvider from "@/style/StyleProvider";
 import { Provider } from "react-redux";
+import { styled } from "styled-components";
 import Navbar from "./Navbar";
 
 export default function GlobalLayout({
@@ -15,8 +16,15 @@ export default function GlobalLayout({
     <Provider store={themeStore}>
       <StyleProvider>
         <Navbar />
-        <Flex justifyContent="center">{children}</Flex>
+        <GlobalLayoutWrapper justifyContent="center">
+          {children}
+        </GlobalLayoutWrapper>
       </StyleProvider>
     </Provider>
   );
 }
+
+const GlobalLayoutWrapper = styled(Flex)`
+  background-color: ${({ theme }) => theme.palette.background1};
+  color: ${({ theme }) => theme.palette.text1};
+`;

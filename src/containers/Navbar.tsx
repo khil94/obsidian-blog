@@ -13,7 +13,7 @@ export default function Navbar({ children }: { children?: React.ReactNode }) {
   const { theme } = useThemeSelector((v) => v.theme);
 
   return (
-    <Flex
+    <NavbarWrapper
       padding="1rem"
       justifyContent="space-between"
       alignItems="center"
@@ -37,10 +37,15 @@ export default function Navbar({ children }: { children?: React.ReactNode }) {
           <Light width="32" height="32" />
         )}
       </ThemeBtn>
-    </Flex>
+    </NavbarWrapper>
   );
 }
 
 const ThemeBtn = styled(Button)`
   background-color: ${({ theme }) => theme.palette.background1};
+`;
+
+const NavbarWrapper = styled(Flex)`
+  background-color: ${({ theme }) => theme.palette.background1};
+  color: ${({ theme }) => theme.palette.text1};
 `;
