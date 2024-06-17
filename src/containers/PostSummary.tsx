@@ -20,7 +20,7 @@ export default function PostSummary({
   date,
 }: IProp) {
   return (
-    <Anchor margin="1rem auto" href={url}>
+    <Anchor href={url}>
       <PostSummaryWrapper borderRadius="8px">
         <img src={thumbnail} alt="thumbnail" />
         <Flex backgroundColor="none" padding="2.4rem" flexDirection="column">
