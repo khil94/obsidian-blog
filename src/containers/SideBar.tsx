@@ -18,7 +18,6 @@ export default function SideBar({ category, onSelect }: IProp) {
     return (
       <CategoryComp
         borderRadius="12px"
-        margin="1rem auto"
         width="100%"
         className={`category-btn ${selected ? "selected" : ""}`}
         justifyContent="flex-start"
@@ -38,9 +37,11 @@ export default function SideBar({ category, onSelect }: IProp) {
           onSelect(e.target.innerHTML);
         }
       }}
-      padding="2rem"
+      padding="0 1rem"
+      margin="1rem auto"
       flexDirection="column"
       tagName="aside"
+      gap="1rem"
     >
       {["전체", ...Array.from(categoryList)].map((v, i) => {
         return v === "전체" ? (
@@ -54,9 +55,25 @@ export default function SideBar({ category, onSelect }: IProp) {
 }
 
 const SidebarWrapper = styled(Flex)`
-  // background-color: ${({ theme }) => theme.palette.background1};
   ${({ theme }) => theme.device.laptop} {
     display: none;
+  }
+  position: sticky;
+  top: 1rem;
+  max-height: 50%;
+  overflow-y: auto;
+  height: 30rem;
+
+  &::-webkit-scrollbar {
+    width: 0.3rem;
+    border-radius: 24px;
+
+    background-color: ${({ theme }) => theme.palette.border};
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 24px;
+
+    background-color: ${({ theme }) => theme.palette.main};
   }
 `;
 
