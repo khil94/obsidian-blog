@@ -149,3 +149,9 @@ a {
 a:visited {
   color: inherit;
 }
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-use-select: none;
+  user-select: none;
+}
