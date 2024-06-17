@@ -24,6 +24,7 @@ interface ITextProp {
   margin?: string;
   padding?: string;
   cursor?: ICursor;
+  borderRadius?: string;
   fontWeight?: string;
 }
 
@@ -63,4 +64,5 @@ const TextComponent = styled.div<ITextProp>`
   word-break: ${({ wordBreak }) => wordBreak};
   white-space: ${({ whiteSpace }) => whiteSpace};
   cursor: ${({ cursor }) => cursor};
+  border-radius: ${({ borderRadius }) => borderRadius};
 `;
