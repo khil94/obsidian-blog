@@ -9,11 +9,9 @@ import { useDispatch } from "react-redux";
 const useTheme = () => {
   const dispatch = useDispatch();
   const { theme } = useThemeSelector((theme) => theme.theme);
-  console.log("inside useTheme", theme);
   const setTheme = useCallback(
     (val: ITheme) => {
       document.documentElement.setAttribute("data-theme", val);
-      console.log("inside set theme", val);
       dispatch(changeTheme(val));
       setCookie("theme", val);
     },
@@ -22,7 +20,6 @@ const useTheme = () => {
 
   const initiateState = useCallback(() => {
     const cookieTheme = getCookie("theme");
-    console.log("inside initiate", cookieTheme);
 
     if (cookieTheme) {
       setTheme(cookieTheme as ITheme);
@@ -31,13 +28,11 @@ const useTheme = () => {
         .matches
         ? "dark"
         : ("light" as ITheme);
-      console.log("inside initiate cookie", cookieTheme);
       setTheme(systemTheme);
     }
   }, [setTheme]);
 
   const toggleTheme = useCallback(() => {
-    console.log("inside toggle theme", theme);
     if (theme === "light") {
       setTheme("dark");
     } else {
