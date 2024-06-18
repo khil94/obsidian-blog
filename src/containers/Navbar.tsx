@@ -18,6 +18,8 @@ export default function Navbar({ children }: { children?: React.ReactNode }) {
       justifyContent="space-between"
       alignItems="center"
       tagName="nav"
+      width="100%"
+      height="5rem"
     >
       <Anchor href="/">
         <Flex>
@@ -46,6 +48,11 @@ const ThemeBtn = styled(Button)`
 `;
 
 const NavbarWrapper = styled(Flex)`
-  background-color: ${({ theme }) => theme.palette.background1};
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(15px);
+  background-color: transparent;
   color: ${({ theme }) => theme.palette.text1};
 `;

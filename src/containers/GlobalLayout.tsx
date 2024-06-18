@@ -15,9 +15,9 @@ export default function GlobalLayout({
   return (
     <Provider store={themeStore}>
       <StyleProvider>
-        <Navbar />
-        <GlobalLayoutWrapper justifyContent="center">
-          {children}
+        <GlobalLayoutWrapper flexDirection="column">
+          <Navbar />
+          <Flex justifyContent="center">{children}</Flex>
         </GlobalLayoutWrapper>
       </StyleProvider>
     </Provider>
