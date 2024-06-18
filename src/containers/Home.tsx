@@ -93,7 +93,7 @@ export default function Home() {
           height: "inherit",
           justifyContent: "center",
           flexDirection: "row",
-          width: "100%",
+          width: "80%",
           gap: "2rem",
         }}
       >
