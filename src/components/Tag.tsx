@@ -30,7 +30,7 @@ export default function Tag({ style, content, ...props }: IProp) {
 }
 
 const Tg = styled.div<ITagProp>`
-  font-weight: ${({ fontWeight }) => fontWeight || "bold"};
+  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : "bold")};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   margin: ${({ margin }) => margin};
