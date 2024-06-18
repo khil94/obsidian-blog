@@ -61,7 +61,14 @@ export default function Home() {
     >
       <HeadBar category={category} onSelect={handleSelectCategory} />
 
-      <Flex style={{ gap: "1rem" }}>
+      <Flex
+        style={{
+          width: "50%",
+          flexWrap: "wrap",
+          gap: "1rem",
+          justifyContent: "center",
+        }}
+      >
         {Array.from(tagList).map((v) => {
           return (
             <CustomTag
