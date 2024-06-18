@@ -11,8 +11,7 @@ interface Iprop {
   tags: string;
 }
 export default function PostTitle({ content, createdAt, tags }: Iprop) {
-  const categoryList = tags.split(",").map((v) => v.trim());
-  console.log("category list : ", categoryList);
+  const tagList = tags.split(",").map((v) => v.trim());
   return (
     <PostTitleWrapper
       style={{
@@ -36,7 +35,7 @@ export default function PostTitle({ content, createdAt, tags }: Iprop) {
         }}
       >
         <Flex>
-          {categoryList.map((v) => {
+          {tagList.map((v) => {
             return (
               <Anchor
                 href={{
