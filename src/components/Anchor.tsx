@@ -14,11 +14,7 @@ interface IAnchorProps {
   fontSize?: string;
 }
 
-interface ICustomProp {
-  href: string;
-}
-
-type IProp = IAnchorProps & ICustomProp & ComponentPropsWithoutRef<"a">;
+type IProp = IAnchorProps & ComponentPropsWithoutRef<typeof Link>;
 
 export default function Anchor({ href, ...rest }: IProp) {
   return <LinkAnchor href={href} {...rest} />;
