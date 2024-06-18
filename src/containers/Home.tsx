@@ -1,6 +1,5 @@
 import Flex from "@/components/Flex";
 import Tag from "@/components/Tag";
-import Text from "@/components/Text";
 import { allPosts } from "@/contentlayer/generated";
 import { PostListByCategory } from "@/utils/category";
 import { PostListByTag, tagList } from "@/utils/tag";
@@ -8,20 +7,26 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import HeadBar from "./HeadBar";
-import PostSummary from "./PostSummary";
+import PostList from "./PoistList";
 import SideBar from "./SideBar";
 
 export default function Home({ query }: any) {
   const router = useSearchParams();
+
   const [postList, setPostList] = useState(allPosts);
   const [category, setCategory] = useState("전체");
   const [tag, setTag] = useState(router.get("tag") || "");
+
   const getPostListByCategory = () => {
     if (category === "전체") {
-      setPostList(allPosts);
+      return allPosts;
     } else {
-      setPostList(PostListByCategory[category]);
+      return PostListByCategory[category];
     }
+  };
+
+  const setPostListByCategory = () => {
+    setPostList(getPostListByCategory());
   };
 
   const handleSelectCategory = (v: string) => {
@@ -30,7 +35,7 @@ export default function Home({ query }: any) {
   };
 
   useEffect(() => {
-    getPostListByCategory();
+    setPostListByCategory();
   }, [category]);
 
   useEffect(() => {
@@ -39,7 +44,7 @@ export default function Home({ query }: any) {
         category === "전체" ? allPosts : PostListByCategory[category];
       setPostList(target.filter((v) => PostListByTag[tag].includes(v)));
     } else {
-      getPostListByCategory();
+      setPostListByCategory();
     }
   }, [tag]);
 
@@ -78,33 +83,7 @@ export default function Home({ query }: any) {
       >
         <SideBar onSelect={handleSelectCategory} category={category} />
 
-        <Flex>
-          <PostListWrapper
-            width="100%"
-            gap="2rem"
-            padding="1rem 0"
-            flexDirection="column"
-          >
-            {postList.length !== 0 ? (
-              postList.map((v) => {
-                return (
-                  <PostSummary
-                    title={v.title}
-                    description={v.description}
-                    thumbnail={v.thumbnail}
-                    url={v.url}
-                    date={v.createdAt}
-                    category={v.category}
-                  />
-                );
-              })
-            ) : (
-              <Flex minWidth="36rem" padding="2.4rem">
-                <Text>게시물이 없습니다.</Text>
-              </Flex>
-            )}
-          </PostListWrapper>
-        </Flex>
+        <PostList postList={postList} />
       </Flex>
     </HomePageWrapper>
   );
@@ -125,5 +104,3 @@ const CustomTag = styled(Tag)`
     color: ${({ theme }) => theme.palette.white};
   }
 `;
-
-const PostListWrapper = styled(Flex)``;
