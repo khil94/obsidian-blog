@@ -29,16 +29,23 @@ interface IFlexProps {
 
 type ICustomFlexProps<T extends IFlexElementType> = {
   tagName?: T;
+  style?: IFlexProps;
 };
-type IProp<T extends IFlexElementType> = IFlexProps &
-  ComponentPropsWithoutRef<T> &
+type IProp<T extends IFlexElementType> = ComponentPropsWithoutRef<T> &
   ICustomFlexProps<T>;
 
 export default function Flex<T extends IFlexElementType>({
   tagName,
+  style,
   ...props
 }: IProp<T>) {
-  return <FlexComp as={tagName || ("div" as IFlexElementType)} {...props} />;
+  return (
+    <FlexComp
+      as={tagName || ("div" as IFlexElementType)}
+      style={style}
+      {...props}
+    />
+  );
 }
 
 const FlexComp = styled.div<IFlexProps>`

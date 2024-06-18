@@ -15,9 +15,18 @@ export default function GlobalLayout({
   return (
     <Provider store={themeStore}>
       <StyleProvider>
-        <GlobalLayoutWrapper height="100vh" flexDirection="column">
+        <GlobalLayoutWrapper
+          style={{ height: "100vh", flexDirection: "column" }}
+        >
           <Navbar />
-          <Flex justifyContent="center">{children}</Flex>
+          <Flex
+            style={{
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+          >
+            {children}
+          </Flex>
         </GlobalLayoutWrapper>
       </StyleProvider>
     </Provider>

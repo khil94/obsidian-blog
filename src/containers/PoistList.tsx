@@ -10,27 +10,30 @@ interface IProp {
 export default function PostList({ postList }: IProp) {
   return (
     <Flex
-      width="100%"
-      alignItems="center"
-      gap="2rem"
-      padding="1rem 0"
-      flexDirection="column"
+      style={{
+        width: "100%",
+        alignItems: "center",
+        gap: "2rem",
+        padding: "1rem 0",
+        flexDirection: "column",
+      }}
     >
       {postList.length !== 0 ? (
-        postList.map((v) => {
+        postList.map((v, i) => {
           return (
             <PostSummary
               title={v.title}
               description={v.description}
               thumbnail={v.thumbnail}
               url={v.url}
+              key={`summary-${v.title}_${i}`}
               date={v.createdAt}
               category={v.category}
             />
           );
         })
       ) : (
-        <Flex minWidth="36rem" padding="2.4rem">
+        <Flex style={{ minWidth: "36rem", padding: "2.4rem" }}>
           <Text>게시물이 없습니다.</Text>
         </Flex>
       )}

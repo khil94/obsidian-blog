@@ -31,19 +31,24 @@ interface ITextProp {
 
 type ICustomTextProps<T extends ITextElementType> = {
   tagName?: T;
+  style?: ITextProp;
 };
 
-type IProp<T extends ITextElementType> = ITextProp &
-  ComponentPropsWithoutRef<T> &
+type IProp<T extends ITextElementType> = ComponentPropsWithoutRef<T> &
   ICustomTextProps<T>;
 
 export default function Text<T extends ITextElementType>({
   tagName,
   children,
+  style,
   ...rest
 }: IProp<T>) {
   return (
-    <TextComponent {...rest} as={tagName || ("p" as ITextElementType)}>
+    <TextComponent
+      style={style}
+      {...rest}
+      as={tagName || ("p" as ITextElementType)}
+    >
       {children}
     </TextComponent>
   );

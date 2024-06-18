@@ -17,12 +17,14 @@ export default function SideBar({ category, onSelect }: IProp) {
   }) {
     return (
       <CategoryComp
-        borderRadius="12px"
-        width="100%"
+        style={{
+          borderRadius: "12px",
+          width: "100%",
+          justifyContent: "flex-start",
+          padding: "1rem",
+          cursor: "pointer",
+        }}
         className={`category-btn ${selected ? "selected" : ""}`}
-        justifyContent="flex-start"
-        padding="1rem"
-        cursor="pointer"
       >
         {text}
       </CategoryComp>
@@ -37,17 +39,30 @@ export default function SideBar({ category, onSelect }: IProp) {
           onSelect(e.target.innerHTML);
         }
       }}
-      padding="0 1rem"
-      margin="1rem auto"
-      flexDirection="column"
+      style={{
+        padding: "0 1rem",
+        margin: "1rem auto",
+        flexDirection: "column",
+        gap: "1rem",
+        minHeight: "30rem",
+        maxHeight: "30rem",
+        minWidth: "fit-content",
+      }}
       tagName="aside"
-      gap="1rem"
     >
       {["전체", ...Array.from(categoryList)].map((v, i) => {
         return v === "전체" ? (
-          <CategoryComponent selected={v === category} text={`전체`} />
+          <CategoryComponent
+            key={`category-all`}
+            selected={v === category}
+            text={`전체`}
+          />
         ) : (
-          <CategoryComponent selected={v === category} text={`${v}`} />
+          <CategoryComponent
+            key={`category-${v}`}
+            selected={v === category}
+            text={`${v}`}
+          />
         );
       })}
     </SidebarWrapper>
@@ -60,10 +75,7 @@ const SidebarWrapper = styled(Flex)`
   }
   position: sticky;
   top: 8rem;
-  max-height: 50%;
   overflow-y: auto;
-  height: 30rem;
-
   &::-webkit-scrollbar {
     width: 0.3rem;
     border-radius: 24px;

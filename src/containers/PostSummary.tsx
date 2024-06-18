@@ -23,27 +23,45 @@ export default function PostSummary({
   category,
 }: IProp) {
   return (
-    <Anchor width="36rem" href={url}>
-      <PostSummaryWrapper gap=".5rem" padding="1.2rem" borderRadius="8px">
+    <Anchor style={{ width: "36rem" }} href={url}>
+      <PostSummaryWrapper
+        style={{ gap: ".5rem", padding: "1.2rem", borderRadius: "8px" }}
+      >
         <img src={thumbnail} alt="thumbnail" />
         <Flex
-          width="100%"
-          backgroundColor="none"
-          flexDirection="column"
-          gap=".5rem"
-          flex="1"
+          style={{
+            width: "100%",
+            backgroundColor: "none",
+            flexDirection: "column",
+            gap: ".5rem",
+            flex: "1",
+          }}
         >
-          <Text fontSize=".8rem" textAlign="right">
+          <Text style={{ fontSize: ".8rem", textAlign: "right" }}>
             {dateToYYYYMMDD(date)}
           </Text>
-          <Text maxLine={2} tagName="h2" fontSize="1.5rem" fontWeight="bold">
+          <Text
+            tagName="h2"
+            style={{
+              maxLine: 2,
+              fontSize: "1.5rem",
+              fontWeight: "bold",
+            }}
+          >
             {title}
           </Text>
 
-          <Text minHeight="3.5rem" maxLine={2}>
+          <Text
+            style={{
+              minHeight: "3.5rem",
+              maxLine: 2,
+            }}
+          >
             {makeEllipsis(description, 83)}
           </Text>
-          <PostSummaryCategory fontSize=".8rem">{category}</PostSummaryCategory>
+          <PostSummaryCategory style={{ fontSize: ".8rem" }}>
+            {category}
+          </PostSummaryCategory>
         </Flex>
       </PostSummaryWrapper>
     </Anchor>

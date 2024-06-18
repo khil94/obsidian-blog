@@ -14,10 +14,14 @@ interface IAnchorProps {
   fontSize?: string;
 }
 
-type IProp = IAnchorProps & ComponentPropsWithoutRef<typeof Link>;
+interface ICustomAnchorProp {
+  style?: IAnchorProps;
+}
 
-export default function Anchor({ href, ...rest }: IProp) {
-  return <LinkAnchor href={href} {...rest} />;
+type IProp = ICustomAnchorProp & ComponentPropsWithoutRef<typeof Link>;
+
+export default function Anchor({ href, style, ...rest }: IProp) {
+  return <LinkAnchor style={style} href={href} {...rest} />;
 }
 
 const LinkAnchor = styled(Link)<IAnchorProps>`

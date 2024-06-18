@@ -14,23 +14,28 @@ export default function Navbar({ children }: { children?: React.ReactNode }) {
 
   return (
     <NavbarWrapper
-      padding="1rem"
-      justifyContent="space-between"
-      alignItems="center"
+      style={{
+        padding: "1rem",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: "100%",
+        height: "5rem",
+      }}
       tagName="nav"
-      width="100%"
-      height="5rem"
     >
       <Anchor href="/">
         <Flex>
           <img width={36} src="/logo.png" alt="logo" />
-          <Text margin="0 1rem">Zidru's blog</Text>
+          <Text style={{ margin: "0 1rem" }}>Zidru's blog</Text>
         </Flex>
       </Anchor>
       <ThemeBtn
-        borderRadius="12px"
-        padding="12px"
-        color="white"
+        style={{
+          borderRadius: "12px",
+          padding: "12px",
+          color: "white",
+          border: "none",
+        }}
         onClick={toggleTheme}
       >
         {theme === "dark" ? (

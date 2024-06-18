@@ -1,6 +1,7 @@
+import { ComponentPropsWithoutRef } from "react";
 import { styled } from "styled-components";
 
-interface ITagProp extends React.HTMLAttributes<HTMLDivElement> {
+interface ITagProp {
   width?: string;
   height?: string;
   margin?: string;
@@ -15,45 +16,33 @@ interface ITagProp extends React.HTMLAttributes<HTMLDivElement> {
 
 interface ICustomTagProp {
   content: string;
+  style?: ITagProp;
 }
 
-type IProp = ICustomTagProp & ITagProp;
+type IProp = ICustomTagProp & ComponentPropsWithoutRef<"div">;
 
-export default function Tag({
-  cursor = "pointer",
-  borderRadius = "18px",
-  border = "none",
-  fontWeight = "bold",
-  content,
-  ...props
-}: IProp) {
+export default function Tag({ style, content, ...props }: IProp) {
   return (
-    <Tg
-      cursor={cursor}
-      border={border}
-      borderRadius={borderRadius}
-      fontWeight={fontWeight}
-      {...props}
-    >
+    <Tg style={style} {...props}>
       #{content}
     </Tg>
   );
 }
 
 const Tg = styled.div<ITagProp>`
-  font-weight: ${({ fontWeight }) => fontWeight};
+  font-weight: ${({ fontWeight }) => fontWeight || "bold"};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
-  cursor: ${({ cursor }) => cursor};
-  border-radius: ${({ borderRadius }) => borderRadius};
+  cursor: ${({ cursor }) => (cursor ? cursor : "pointer")};
+  border-radius: ${({ borderRadius }) =>
+    borderRadius ? borderRadius : "18px"};
   background-color: ${({ backgroundColor, theme }) =>
-    backgroundColor || theme.palette.main};
-  color: ${({ color, theme }) => color || theme.palette.white};
+    backgroundColor ? backgroundColor : theme.palette.main};
+  color: ${({ color, theme }) => (color ? color : theme.palette.white)};
   display: flex;
   align-items: center;
   justify-content: ${({ justifyContent }) => justifyContent};
-  border: ${({ border }) =>
-    border === "none" ? "none" : `1px solid ${border}`};
+  border: ${({ border }) => (border ? border : "none")};
 `;

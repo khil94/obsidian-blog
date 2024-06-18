@@ -13,21 +13,25 @@ interface IProp {
 export default function NextPostCard(props: IProp) {
   return (
     <PostCardWrapper
-      width="50%"
-      borderRadius="6px"
-      margin="1rem"
+      style={{
+        width: "50%",
+        borderRadius: "6px",
+        margin: "1rem",
+      }}
       href={props.url}
     >
       <Flex
-        borderRadius="6px"
-        width="100%"
-        padding="24px"
-        flexDirection="column"
+        style={{
+          borderRadius: "6px",
+          width: "100%",
+          padding: "24px",
+          flexDirection: "column",
+        }}
       >
-        <Text fontWeight="bold" fontSize="0.9rem">
+        <Text style={{ fontWeight: "bold", fontSize: "0.9rem" }}>
           {props.direction === "prev" ? "이전글" : "다음글"}
         </Text>
-        <Text fontWeight="bold" fontSize="1rem" tagName="h2">
+        <Text style={{ fontWeight: "bold", fontSize: "1rem" }} tagName="h2">
           {makeEllipsis(props.title, 19)}
         </Text>
       </Flex>

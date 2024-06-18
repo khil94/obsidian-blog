@@ -1,6 +1,7 @@
+import { ComponentPropsWithoutRef } from "react";
 import { styled } from "styled-components";
 
-interface IProp extends React.HTMLAttributes<HTMLButtonElement> {
+interface IButtonProp {
   width?: string;
   height?: string;
   margin?: string;
@@ -12,35 +13,28 @@ interface IProp extends React.HTMLAttributes<HTMLButtonElement> {
   backgroundColor?: string;
 }
 
-export default function Button({
-  cursor = "pointer",
-  borderRadius = "6px",
-  border = "none",
-  ...props
-}: IProp) {
-  return (
-    <Btn
-      cursor={cursor}
-      border={border}
-      borderRadius={borderRadius}
-      {...props}
-    />
-  );
+interface ICustomBtnProp {
+  style?: IButtonProp;
 }
 
-const Btn = styled.button<IProp>`
+type IProp = ICustomBtnProp & ComponentPropsWithoutRef<"button">;
+
+export default function Button({ style, ...props }: IProp) {
+  return <Btn style={style} {...props} />;
+}
+
+const Btn = styled.button<IButtonProp>`
   width: ${({ width }) => width};
   height: ${({ height }) => height};
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
-  cursor: ${({ cursor }) => cursor};
-  border-radius: ${({ borderRadius }) => borderRadius};
+  cursor: ${({ cursor }) => cursor || "pointer"};
+  border-radius: ${({ borderRadius }) => (borderRadius ? borderRadius : "6px")};
   background-color: ${({ backgroundColor, theme }) =>
-    backgroundColor || theme.palette.main};
-  color: ${({ color, theme }) => color || theme.palette.text1};
+    backgroundColor ? backgroundColor : theme.palette.main};
+  color: ${({ color, theme }) => (color ? color : theme.palette.text1)};
   display: flex;
   align-items: center;
   justify-content: ${({ justifyContent }) => justifyContent};
-  border: ${({ border }) =>
-    border === "none" ? "none" : `1px solid ${border}`};
+  border: ${({ border }) => (border ? border : "none")};
 `;

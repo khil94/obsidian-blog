@@ -53,13 +53,15 @@ export default function Home() {
 
   return (
     <HomePageWrapper
-      maxWidth="1280px"
-      flexDirection="column"
-      alignItems="center"
+      style={{
+        maxWidth: "1280px",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
     >
       <HeadBar category={category} onSelect={handleSelectCategory} />
 
-      <Flex gap="1rem">
+      <Flex style={{ gap: "1rem" }}>
         {Array.from(tagList).map((v) => {
           return (
             <CustomTag
@@ -70,19 +72,22 @@ export default function Home() {
                   handleClickTag(v);
                 }
               }}
+              key={`tag-${v}`}
               className={`tag-btn ${tag === v ? "selected" : ""}`}
-              padding=".3rem"
+              style={{ padding: ".3rem" }}
               content={v}
             />
           );
         })}
       </Flex>
       <Flex
-        height="inherit"
-        justifyContent="center"
-        flexDirection="row"
-        width="100%"
-        gap="2rem"
+        style={{
+          height: "inherit",
+          justifyContent: "center",
+          flexDirection: "row",
+          width: "100%",
+          gap: "2rem",
+        }}
       >
         <SideBar onSelect={handleSelectCategory} category={category} />
 

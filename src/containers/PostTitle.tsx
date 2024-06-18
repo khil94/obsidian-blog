@@ -15,18 +15,25 @@ export default function PostTitle({ content, createdAt, tags }: Iprop) {
   console.log("category list : ", categoryList);
   return (
     <PostTitleWrapper
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
+      style={{
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     >
-      <Text wordBreak="keep-all" tagName="h1" fontSize="4rem" lineHeight="1">
+      <Text
+        tagName="h1"
+        style={{ wordBreak: "keep-all", fontSize: "4rem", lineHeight: "1" }}
+      >
         {content}
       </Text>
       <Flex
-        margin="1rem auto"
-        width="100%"
-        alignItems="center"
-        justifyContent="space-between"
+        style={{
+          margin: "1rem auto",
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
       >
         <Flex>
           {categoryList.map((v) => {
@@ -36,8 +43,12 @@ export default function PostTitle({ content, createdAt, tags }: Iprop) {
                   pathname: "/",
                   query: { tag: v },
                 }}
+                key={v}
               >
-                <Tag margin="0 .2rem" padding=".3rem" key={v} content={v} />
+                <Tag
+                  style={{ margin: "0 .2rem", padding: ".3rem" }}
+                  content={v}
+                />
               </Anchor>
             );
           })}

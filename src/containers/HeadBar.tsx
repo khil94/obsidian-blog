@@ -18,11 +18,13 @@ export default function HeadBar({ category, onSelect }: IProp) {
   }) {
     return (
       <CategoryComp
-        margin="1rem auto"
         className={`category-btn ${selected ? "selected" : ""}`}
-        padding="1rem"
-        borderRadius="12px"
-        cursor="pointer"
+        style={{
+          margin: "1rem auto",
+          padding: "1rem",
+          borderRadius: "12px",
+          cursor: "pointer",
+        }}
       >
         {text}
       </CategoryComp>
@@ -37,15 +39,25 @@ export default function HeadBar({ category, onSelect }: IProp) {
           onSelect(e.target.innerHTML);
         }
       }}
-      gap="1rem"
-      margin="1rem auto"
-      flexDirection="row"
+      style={{
+        margin: "1rem auto",
+        flexDirection: "row",
+        gap: "1rem",
+      }}
     >
       {["전체", ...Array.from(categoryList)].map((v, i) => {
         return v === "전체" ? (
-          <CategoryComponent selected={v === category} text={`전체`} />
+          <CategoryComponent
+            key={`head-category-all`}
+            selected={v === category}
+            text={`전체`}
+          />
         ) : (
-          <CategoryComponent selected={v === category} text={`${v}`} />
+          <CategoryComponent
+            key={`head-category-${v}`}
+            selected={v === category}
+            text={`${v}`}
+          />
         );
       })}
     </HeadBarWrapper>
