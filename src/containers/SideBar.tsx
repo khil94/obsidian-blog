@@ -59,7 +59,7 @@ const SidebarWrapper = styled(Flex)`
     display: none;
   }
   position: sticky;
-  top: 1rem;
+  top: 8rem;
   max-height: 50%;
   overflow-y: auto;
   height: 30rem;
