@@ -5,6 +5,7 @@ import { PostListByCategory } from "@/utils/category";
 import { PostListByTag, tagList } from "@/utils/tag";
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
+import HeadBar from "./HeadBar";
 import PostSummary from "./PostSummary";
 import SideBar from "./SideBar";
 
@@ -19,6 +20,11 @@ export default function Home() {
     } else {
       setPostList(PostListByCategory[category]);
     }
+  };
+
+  const handleSelectCategory = (v: string) => {
+    window.scrollTo(0, 0);
+    setCategory(v);
   };
 
   useEffect(() => {
@@ -42,30 +48,36 @@ export default function Home() {
       alignItems="center"
       minHeight="100vh"
     >
-      <Flex flexDirection="column" width="100%">
+      <HeadBar category={category} onSelect={handleSelectCategory} />
+
+      <Flex gap="1rem">
+        {Array.from(tagList).map((v) => {
+          return (
+            <CustomTag
+              onClick={() => {
+                if (tag === v) {
+                  setTag("");
+                } else {
+                  setTag(v);
+                }
+              }}
+              className={`tag-btn ${tag === v ? "selected" : ""}`}
+              padding=".3rem"
+            >{`#${v} `}</CustomTag>
+          );
+        })}
+      </Flex>
+      <Flex
+        height="inherit"
+        justifyContent="center"
+        flexDirection="row"
+        width="100%"
+        gap="2rem"
+      >
+        <SideBar onSelect={handleSelectCategory} category={category} />
+
         <Flex>
-          {Array.from(tagList).map((v) => {
-            return (
-              <CustomTag
-                onClick={() => {
-                  if (tag === v) {
-                    setTag("");
-                  } else {
-                    setTag(v);
-                  }
-                }}
-                className={`tag-btn ${tag === v ? "selected" : ""}`}
-                margin="auto 1rem"
-                padding=".3rem"
-              >{`#${v} `}</CustomTag>
-            );
-          })}
-        </Flex>
-        <Flex>
-          <Flex>
-            <SideBar onSelect={(v) => setCategory(v)} category={category} />
-          </Flex>
-          <PostListWrapper padding="2rem" flexDirection="column">
+          <PostListWrapper gap="2rem" padding="1rem 0" flexDirection="column">
             {postList.map((v) => {
               return (
                 <PostSummary
