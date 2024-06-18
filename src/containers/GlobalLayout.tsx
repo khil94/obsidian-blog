@@ -15,7 +15,7 @@ export default function GlobalLayout({
   return (
     <Provider store={themeStore}>
       <StyleProvider>
-        <GlobalLayoutWrapper flexDirection="column">
+        <GlobalLayoutWrapper minHeight="100vh" flexDirection="column">
           <Navbar />
           <Flex justifyContent="center">{children}</Flex>
         </GlobalLayoutWrapper>
@@ -27,4 +27,5 @@ export default function GlobalLayout({
 const GlobalLayoutWrapper = styled(Flex)`
   background-color: ${({ theme }) => theme.palette.background1};
   color: ${({ theme }) => theme.palette.text1};
+  overflow-x: hidden;
 `;
