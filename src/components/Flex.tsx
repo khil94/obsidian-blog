@@ -22,6 +22,8 @@ interface IFlexProps {
   fontSize?: string;
   flex?: string;
   minHeight?: string;
+  minWidth?: string;
+
   gap?: string;
 }
 
@@ -56,5 +58,6 @@ const FlexComp = styled.div<IFlexProps>`
   font-size: ${({ fontSize }) => fontSize};
   flex: ${({ flex }) => flex};
   min-height: ${({ minHeight }) => minHeight};
+  min-width: ${({ minWidth }) => minWidth};
   gap: ${({ gap }) => gap};
 `;
