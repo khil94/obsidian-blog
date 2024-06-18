@@ -61,7 +61,7 @@ const HeadBarWrapper = styled(Flex)`
   top: 1rem;
   width: 70%;
   &::-webkit-scrollbar {
-    height: 0.3rem;
+    height: 0.5rem;
     background-color: ${({ theme }) => theme.palette.border};
   }
   &::-webkit-scrollbar-thumb {
