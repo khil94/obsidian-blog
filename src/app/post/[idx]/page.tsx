@@ -40,8 +40,8 @@ export default function PostDetailPage() {
           <SetPostCard direction="prev" />
           <SetPostCard direction="next" />
         </Flex>
-        <Anchor href="/">
-          <Button margin="2rem 1rem" width="100%" height="3rem">
+        <Anchor margin="2rem 1rem" href="/">
+          <Button width="100%" height="3rem">
             <Flex
               color="white"
               backgroundColor="inherit"
