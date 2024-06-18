@@ -34,7 +34,14 @@ export default function PostTitle({ content, createdAt, tags }: Iprop) {
           justifyContent: "space-between",
         }}
       >
-        <Flex>
+        <PostTagListWrapper
+          style={{
+            width: "60%",
+            flexWrap: "wrap",
+            gap: "1rem",
+            alignItems: "center",
+          }}
+        >
           {tagList.map((v) => {
             return (
               <Anchor
@@ -45,13 +52,16 @@ export default function PostTitle({ content, createdAt, tags }: Iprop) {
                 key={v}
               >
                 <Tag
-                  style={{ margin: "0 .2rem", padding: ".3rem" }}
+                  style={{
+                    margin: "0 .2rem",
+                    padding: ".3rem",
+                  }}
                   content={v}
                 />
               </Anchor>
             );
           })}
-        </Flex>
+        </PostTagListWrapper>
         <Text>{dateToYYYYMMDD(createdAt)}</Text>
       </Flex>
     </PostTitleWrapper>
@@ -62,4 +72,14 @@ const PostTitleWrapper = styled(Flex)`
   background-color: ${({ theme }) => theme.palette.background1};
   color: ${({ theme }) => theme.palette.text1};
   margin: 2rem 0;
+`;
+
+const PostTagListWrapper = styled(Flex)`
+  &::-webkit-scrollbar {
+    height: 0.5rem;
+    background-color: ${({ theme }) => theme.palette.border};
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.palette.main};
+  }
 `;
