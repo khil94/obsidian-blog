@@ -1,5 +1,6 @@
 import Flex from "@/components/Flex";
 import Tag from "@/components/Tag";
+import Text from "@/components/Text";
 import { allPosts } from "@/contentlayer/generated";
 import { PostListByCategory } from "@/utils/category";
 import { PostListByTag, tagList } from "@/utils/tag";
@@ -77,18 +78,30 @@ export default function Home() {
         <SideBar onSelect={handleSelectCategory} category={category} />
 
         <Flex>
-          <PostListWrapper gap="2rem" padding="1rem 0" flexDirection="column">
-            {postList.map((v) => {
-              return (
-                <PostSummary
-                  title={v.title}
-                  description={v.description}
-                  thumbnail={v.thumbnail}
-                  url={v.url}
-                  date={v.createdAt}
-                />
-              );
-            })}
+          <PostListWrapper
+            width="100%"
+            gap="2rem"
+            padding="1rem 0"
+            flexDirection="column"
+          >
+            {postList.length !== 0 ? (
+              postList.map((v) => {
+                return (
+                  <PostSummary
+                    title={v.title}
+                    description={v.description}
+                    thumbnail={v.thumbnail}
+                    url={v.url}
+                    date={v.createdAt}
+                    category={v.category}
+                  />
+                );
+              })
+            ) : (
+              <Flex minWidth="36rem" padding="2.4rem">
+                <Text>게시물이 없습니다.</Text>
+              </Flex>
+            )}
           </PostListWrapper>
         </Flex>
       </Flex>
