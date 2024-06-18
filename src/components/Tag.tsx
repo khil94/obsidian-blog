@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-interface IProp extends React.HTMLAttributes<HTMLButtonElement> {
+interface ITagProp extends React.HTMLAttributes<HTMLDivElement> {
   width?: string;
   height?: string;
   margin?: string;
@@ -13,11 +13,18 @@ interface IProp extends React.HTMLAttributes<HTMLButtonElement> {
   fontWeight?: string;
 }
 
+interface ICustomTagProp {
+  content: string;
+}
+
+type IProp = ICustomTagProp & ITagProp;
+
 export default function Tag({
   cursor = "pointer",
   borderRadius = "18px",
   border = "none",
   fontWeight = "bold",
+  content,
   ...props
 }: IProp) {
   return (
@@ -27,11 +34,13 @@ export default function Tag({
       borderRadius={borderRadius}
       fontWeight={fontWeight}
       {...props}
-    />
+    >
+      #{content}
+    </Tg>
   );
 }
 
-const Tg = styled.div<IProp>`
+const Tg = styled.div<ITagProp>`
   font-weight: ${({ fontWeight }) => fontWeight};
   width: ${({ width }) => width};
   height: ${({ height }) => height};

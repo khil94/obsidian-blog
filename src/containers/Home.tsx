@@ -4,17 +4,18 @@ import Text from "@/components/Text";
 import { allPosts } from "@/contentlayer/generated";
 import { PostListByCategory } from "@/utils/category";
 import { PostListByTag, tagList } from "@/utils/tag";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import HeadBar from "./HeadBar";
 import PostSummary from "./PostSummary";
 import SideBar from "./SideBar";
 
-export default function Home() {
+export default function Home({ query }: any) {
+  const router = useSearchParams();
   const [postList, setPostList] = useState(allPosts);
   const [category, setCategory] = useState("전체");
-  const [tag, setTag] = useState("");
-
+  const [tag, setTag] = useState(router.get("tag") || "");
   const getPostListByCategory = () => {
     if (category === "전체") {
       setPostList(allPosts);
@@ -47,7 +48,6 @@ export default function Home() {
       maxWidth="1280px"
       flexDirection="column"
       alignItems="center"
-      minHeight="100vh"
     >
       <HeadBar category={category} onSelect={handleSelectCategory} />
 
@@ -64,7 +64,8 @@ export default function Home() {
               }}
               className={`tag-btn ${tag === v ? "selected" : ""}`}
               padding=".3rem"
-            >{`#${v} `}</CustomTag>
+              content={v}
+            />
           );
         })}
       </Flex>

@@ -1,3 +1,4 @@
+import Anchor from "@/components/Anchor";
 import { dateToYYYYMMDD } from "@/utils/dateToYYYYMMDD";
 import { styled } from "styled-components";
 import Flex from "../components/Flex";
@@ -30,9 +31,14 @@ export default function PostTitle({ content, createdAt, tags }: Iprop) {
         <Flex>
           {categoryList.map((v) => {
             return (
-              <Tag margin="0 .2rem" padding=".3rem" key={v}>
-                #{v}
-              </Tag>
+              <Anchor
+                href={{
+                  pathname: "/",
+                  query: { tag: v },
+                }}
+              >
+                <Tag margin="0 .2rem" padding=".3rem" key={v} content={v} />
+              </Anchor>
             );
           })}
         </Flex>
