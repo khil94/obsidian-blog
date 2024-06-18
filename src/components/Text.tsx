@@ -26,6 +26,7 @@ interface ITextProp {
   cursor?: ICursor;
   borderRadius?: string;
   fontWeight?: string;
+  maxLine?: number;
 }
 
 type ICustomTextProps<T extends ITextElementType> = {
@@ -65,4 +66,5 @@ const TextComponent = styled.div<ITextProp>`
   white-space: ${({ whiteSpace }) => whiteSpace};
   cursor: ${({ cursor }) => cursor};
   border-radius: ${({ borderRadius }) => borderRadius};
+  ${({ maxLine }) => maxLine};
 `;
