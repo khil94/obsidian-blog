@@ -3,19 +3,21 @@ import Tag from "@/components/Tag";
 import { allPosts } from "@/contentlayer/generated";
 import { PostListByCategory } from "@/utils/category";
 import { PostListByTag, tagList } from "@/utils/tag";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import HeadBar from "./HeadBar";
 import PostList from "./PoistList";
 import SideBar from "./SideBar";
 
-export default function Home({ query }: any) {
-  const router = useSearchParams();
+export default function Home() {
+  const params = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const [postList, setPostList] = useState(allPosts);
   const [category, setCategory] = useState("전체");
-  const [tag, setTag] = useState(router.get("tag") || "");
+  const tag = params.get("tag");
 
   const getPostListByCategory = () => {
     if (category === "전체") {
@@ -34,19 +36,20 @@ export default function Home({ query }: any) {
     setCategory(v);
   };
 
-  useEffect(() => {
-    setPostListByCategory();
-  }, [category]);
+  const handleClickTag = (target: string) => {
+    const temp = target === "" ? pathname : `${pathname}?tag=${target}`;
+    router.push(temp);
+  };
 
   useEffect(() => {
-    if (tag !== "") {
+    if (tag && tag !== "") {
       const target =
         category === "전체" ? allPosts : PostListByCategory[category];
       setPostList(target.filter((v) => PostListByTag[tag].includes(v)));
     } else {
       setPostListByCategory();
     }
-  }, [tag]);
+  }, [tag, category]);
 
   return (
     <HomePageWrapper
@@ -62,9 +65,9 @@ export default function Home({ query }: any) {
             <CustomTag
               onClick={() => {
                 if (tag === v) {
-                  setTag("");
+                  handleClickTag("");
                 } else {
-                  setTag(v);
+                  handleClickTag(v);
                 }
               }}
               className={`tag-btn ${tag === v ? "selected" : ""}`}
