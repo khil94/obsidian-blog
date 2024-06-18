@@ -16,7 +16,7 @@ export default function Navbar({ children }: { children?: React.ReactNode }) {
     <NavbarWrapper
       style={{
         padding: "1rem",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         alignItems: "center",
         width: "100%",
         height: "5rem",
@@ -26,7 +26,9 @@ export default function Navbar({ children }: { children?: React.ReactNode }) {
       <Anchor href="/">
         <Flex>
           <img width={36} src="/logo.png" alt="logo" />
-          <Text style={{ margin: "0 1rem" }}>Zidru's blog</Text>
+          <Text style={{ fontSize: "1.5rem", margin: "0 1rem" }}>
+            Zidru's blog
+          </Text>
         </Flex>
       </Anchor>
       <ThemeBtn
