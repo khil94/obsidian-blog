@@ -65,6 +65,7 @@ export default function Home() {
         style={{
           width: "50%",
           flexWrap: "wrap",
+          margin: "3rem auto",
           gap: "1rem",
           justifyContent: "center",
         }}
