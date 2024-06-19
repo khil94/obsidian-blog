@@ -12,6 +12,7 @@ interface IAnchorProps {
   cursor?: ICursor;
   backgroundColor?: string;
   fontSize?: string;
+  color?: string;
 }
 
 interface ICustomAnchorProp {
@@ -34,4 +35,5 @@ const LinkAnchor = styled(Link)<IAnchorProps>`
   background-color: ${({ backgroundColor, theme }) =>
     backgroundColor || theme.palette.background1};
   font-size: ${({ fontSize }) => fontSize};
+  color: ${({ color, theme }) => (color ? color : theme.palette.text1)};
 `;
