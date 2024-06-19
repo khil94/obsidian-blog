@@ -29,16 +29,14 @@ export default function PostDetailPage() {
 
   return (
     <Flex style={{ flexDirection: "column", alignItems: "center" }}>
-      <Flex
-        style={{ maxWidth: "768px", flexDirection: "column", margin: "0 auto" }}
-      >
+      <Flex style={{ maxWidth: "768px", flexDirection: "column" }}>
         <PostTitle
           content={targetPost.title}
           createdAt={targetPost.createdAt}
           tags={targetPost.tags}
         />
         <PostDetail code={targetPost.body.code} />
-        <Flex style={{ justifyContent: "space-between" }}>
+        <Flex style={{ justifyContent: "space-between", gap: "1rem" }}>
           <SetPostCard direction="prev" />
           <SetPostCard direction="next" />
         </Flex>
