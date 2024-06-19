@@ -3,6 +3,7 @@
 import Flex from "@/components/Flex";
 import { themeStore } from "@/store";
 import StyleProvider from "@/style/StyleProvider";
+import { Suspense } from "react";
 import { Provider } from "react-redux";
 import { styled } from "styled-components";
 import Navbar from "./Navbar";
@@ -25,7 +26,7 @@ export default function GlobalLayout({
               alignContent: "center",
             }}
           >
-            {children}
+            <Suspense>{children}</Suspense>
           </Flex>
         </GlobalLayoutWrapper>
       </StyleProvider>
