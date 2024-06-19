@@ -1,9 +1,7 @@
 import GlobalLayout from "@/containers/GlobalLayout";
 import { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Serif_KR } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "zidru-blog",
@@ -13,6 +11,11 @@ export const metadata: Metadata = {
   },
 };
 
+const font = Noto_Serif_KR({
+  weight: ["500"],
+  subsets: ["latin"],
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={inter.className}>
+      <body className={font.className}>
         <GlobalLayout>{children}</GlobalLayout>
       </body>
     </html>
