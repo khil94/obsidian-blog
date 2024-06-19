@@ -5,8 +5,8 @@ import Text from "@/components/Text";
 import useTheme from "@/hooks/useTheme";
 import { useThemeSelector } from "@/store/useThemeSelector";
 import { styled } from "styled-components";
-import Dark from "../../public/dark.svg";
-import Light from "../../public/light.svg";
+import Dark from "../../public/Dark.svg";
+import Light from "../../public/Light.svg";
 
 export default function Navbar({ children }: { children?: React.ReactNode }) {
   const { toggleTheme } = useTheme();
