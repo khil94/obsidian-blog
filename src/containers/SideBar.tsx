@@ -33,10 +33,11 @@ export default function SideBar({ category, onSelect }: IProp) {
 
   return (
     <SidebarWrapper
-      onClick={(e) => {
-        if (e.target.className.includes("category-btn")) {
-          console.log(e.target.innerHTML);
-          onSelect(e.target.innerHTML);
+      onClick={(e: React.MouseEvent) => {
+        const target = e.target as HTMLElement;
+        if (target.className.includes("category-btn")) {
+          console.log(target.innerHTML);
+          onSelect(target.innerHTML);
         }
       }}
       style={{
