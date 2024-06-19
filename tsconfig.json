@@ -19,6 +19,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
+      "/": ["./public"],
       "@/contentlayer/generated": ["./.contentlayer/generated"],
 
       "@/contentlayer/generated/*": ["./.contentlayer/generated/*"]
