@@ -23,10 +23,15 @@ export default function Navbar({ children }: { children?: React.ReactNode }) {
       }}
       tagName="nav"
     >
-      <Anchor href="/">
+      <Anchor style={{ backgroundColor: "transparent" }} href="/">
         <Flex>
           <img width={36} src="/logo.png" alt="logo" />
-          <Text style={{ fontSize: "1.5rem", margin: "0 1rem" }}>
+          <Text
+            style={{
+              fontSize: "1.5rem",
+              margin: "0 1rem",
+            }}
+          >
             Zidru's blog
           </Text>
         </Flex>
@@ -37,6 +42,7 @@ export default function Navbar({ children }: { children?: React.ReactNode }) {
           padding: "12px",
           color: "white",
           border: "none",
+          backgroundColor: "transparent",
         }}
         onClick={toggleTheme}
       >
