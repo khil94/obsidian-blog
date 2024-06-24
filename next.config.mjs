@@ -2,7 +2,7 @@ import { withContentlayer } from "next-contentlayer";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   webpack(config) {
     config.module.rules.push({
@@ -13,6 +13,9 @@ const nextConfig = {
     });
 
     return config;
+  },
+  compiler: {
+    styledComponents: true,
   },
 };
 
