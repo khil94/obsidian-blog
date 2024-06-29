@@ -34,6 +34,7 @@ export default function PostDetailPage() {
           content={targetPost.title}
           createdAt={targetPost.createdAt}
           tags={targetPost.tags}
+          thumbnail={targetPost.thumbnail}
         />
         <PostDetail code={targetPost.body.code} />
         <Flex style={{ justifyContent: "space-between", gap: "1rem" }}>

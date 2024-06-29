@@ -9,8 +9,14 @@ interface Iprop {
   content: string;
   createdAt: string;
   tags: string[];
+  thumbnail?: string;
 }
-export default function PostTitle({ content, createdAt, tags }: Iprop) {
+export default function PostTitle({
+  content,
+  createdAt,
+  tags,
+  thumbnail,
+}: Iprop) {
   return (
     <PostTitleWrapper
       style={{
@@ -21,10 +27,23 @@ export default function PostTitle({ content, createdAt, tags }: Iprop) {
     >
       <Text
         tagName="h1"
-        style={{ wordBreak: "keep-all", fontSize: "4rem", lineHeight: "1" }}
+        style={{
+          wordBreak: "keep-all",
+          fontSize: "3.5rem",
+          lineHeight: "1",
+          margin: "2rem 0",
+        }}
       >
         {content}
       </Text>
+      {thumbnail && (
+        <img
+          style={{ maxWidth: "100%", width: "100%" }}
+          src={`/thumbnails/${thumbnail}`}
+          alt={thumbnail}
+        />
+      )}
+
       <Flex
         style={{
           margin: "1rem auto",
