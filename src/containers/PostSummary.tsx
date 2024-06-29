@@ -23,11 +23,11 @@ export default function PostSummary({
   category,
 }: IProp) {
   return (
-    <Anchor style={{ width: "36rem" }} href={url}>
+    <Anchor style={{ width: "48rem" }} href={url}>
       <PostSummaryWrapper
-        style={{ gap: ".5rem", padding: "1.2rem", borderRadius: "8px" }}
+        style={{ gap: "1.5rem", padding: "1.2rem", borderRadius: "8px" }}
       >
-        <img src={thumbnail} alt="thumbnail" />
+        <PostSummaryThumbnail src={thumbnail} alt="thumbnail" />
         <Flex
           style={{
             width: "100%",
@@ -74,4 +74,10 @@ const PostSummaryWrapper = styled(Flex)`
 
 const PostSummaryCategory = styled(Text)`
   color: ${({ theme }) => theme.palette.main};
+`;
+
+const PostSummaryThumbnail = styled.img`
+  max-width: 40%;
+  min-width: 40%;
+  border-radius: 6px;
 `;
