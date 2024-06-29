@@ -8,10 +8,9 @@ import Text from "../components/Text";
 interface Iprop {
   content: string;
   createdAt: string;
-  tags: string;
+  tags: string[];
 }
 export default function PostTitle({ content, createdAt, tags }: Iprop) {
-  const tagList = tags.split(",").map((v) => v.trim());
   return (
     <PostTitleWrapper
       style={{
@@ -42,7 +41,7 @@ export default function PostTitle({ content, createdAt, tags }: Iprop) {
             alignItems: "center",
           }}
         >
-          {tagList.map((v) => {
+          {tags.map((v) => {
             return (
               <Anchor
                 href={{

@@ -21,7 +21,7 @@ const PostDetailWrapper = styled.div`
     font-weight: bold;
     // font-size: ${({ theme }) => theme.palette.background1};
     font-size: 24px;
-    margin: 12px 0;
+    margin: 36px 0;
   }
 
   blockquote {
@@ -35,7 +35,7 @@ const PostDetailWrapper = styled.div`
   code:not([data-language]) {
     background-color: ${({ theme }) => theme.palette.background2};
     border-radius: 6px;
-    padding: 4px;
+    padding: 24px;
     color: ${({ theme }) => theme.palette.main};
   }
   pre {
@@ -61,9 +61,8 @@ const PostDetailWrapper = styled.div`
   ol,
   ul {
     margin: 1rem 0;
-    padding: 2rem;
+    padding: 0.5rem;
     border-radius: 5px;
-    border: ${({ theme }) => `1px solid ${theme.palette.border}`};
     background-color: ${({ theme }) => theme.palette.background1};
     list-style-type: inherit;
   }
