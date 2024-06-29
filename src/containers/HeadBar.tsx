@@ -20,7 +20,6 @@ export default function HeadBar({ category, onSelect }: IProp) {
       <CategoryComp
         className={`category-btn ${selected ? "selected" : ""}`}
         style={{
-          margin: "1rem auto",
           padding: "1rem",
           borderRadius: "12px",
           cursor: "pointer",
@@ -41,8 +40,11 @@ export default function HeadBar({ category, onSelect }: IProp) {
         }
       }}
       style={{
-        margin: "1rem auto",
+        margin: "1rem ",
         flexDirection: "row",
+        alignItems: "flex-start",
+        justifyContent: "flex-start",
+        width: "100%",
         gap: "1rem",
       }}
     >

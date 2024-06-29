@@ -59,8 +59,6 @@ export default function Home() {
         alignItems: "center",
       }}
     >
-      <HeadBar category={category} onSelect={handleSelectCategory} />
-
       <Flex
         style={{
           width: "50%",
@@ -88,12 +86,14 @@ export default function Home() {
           );
         })}
       </Flex>
+      <HeadBar category={category} onSelect={handleSelectCategory} />
+
       <Flex
         style={{
           height: "inherit",
           justifyContent: "center",
           flexDirection: "row",
-          width: "70%",
+          width: "100%",
           gap: "2rem",
         }}
       >
