@@ -8,7 +8,19 @@ export default function PostDetail({ code }: Iprop) {
   const Comp = useMDXComponent(code);
   return (
     <PostDetailWrapper>
-      <Comp />
+      <Comp
+        components={{
+          img: ({ src, alt, width, height }) => (
+            <ImageComponent
+              src={src?.split("public")[1]}
+              alt={alt}
+              width={width}
+              height={height}
+              loading="lazy"
+            />
+          ),
+        }}
+      />
     </PostDetailWrapper>
   );
 }
@@ -83,4 +95,10 @@ const PostDetailWrapper = styled.div`
   strong {
     font-weight: bold;
   }
+`;
+
+const ImageComponent = styled.img`
+  max-width: 100%;
+  margin: 2rem auto;
+  display: block;
 `;
