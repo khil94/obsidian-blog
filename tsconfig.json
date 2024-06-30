@@ -20,7 +20,6 @@
     "paths": {
       "@/*": ["./src/*"],
       "/": ["./public"],
-      "@images/*": ["./posts/Images/*"],
       "@/contentlayer/generated": ["./.contentlayer/generated"],
 
       "@/contentlayer/generated/*": ["./.contentlayer/generated/*"]
