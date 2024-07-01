@@ -54,7 +54,6 @@ export default function Home() {
   return (
     <HomePageWrapper
       style={{
-        maxWidth: "1280px",
         flexDirection: "column",
         alignItems: "center",
       }}
@@ -93,7 +92,6 @@ export default function Home() {
           height: "inherit",
           justifyContent: "center",
           flexDirection: "row",
-          width: "100%",
           gap: "2rem",
         }}
       >
@@ -106,9 +104,7 @@ export default function Home() {
 }
 
 const HomePageWrapper = styled(Flex)`
-  // ${({ theme }) => theme.device.laptop} {
-  //   background-color: green;
-  // }
+  width: 1280px;
 `;
 
 const CustomTag = styled(Tag)`

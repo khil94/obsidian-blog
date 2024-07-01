@@ -23,9 +23,14 @@ export default function PostSummary({
   category,
 }: IProp) {
   return (
-    <Anchor style={{ width: "48rem" }} href={url}>
+    <PostSummaryWrappingAnchor href={url}>
       <PostSummaryWrapper
-        style={{ gap: "1.5rem", padding: "1.2rem", borderRadius: "8px" }}
+        style={{
+          flexDirection: "column",
+          gap: "1.5rem",
+          padding: "1.2rem",
+          borderRadius: "8px",
+        }}
       >
         <PostSummaryThumbnail src={thumbnail} alt="thumbnail" />
         <Flex
@@ -34,7 +39,6 @@ export default function PostSummary({
             backgroundColor: "none",
             flexDirection: "column",
             gap: ".5rem",
-            flex: "1",
           }}
         >
           <Text style={{ fontSize: ".8rem", textAlign: "right" }}>
@@ -64,9 +68,14 @@ export default function PostSummary({
           </PostSummaryCategory>
         </Flex>
       </PostSummaryWrapper>
-    </Anchor>
+    </PostSummaryWrappingAnchor>
   );
 }
+
+const PostSummaryWrappingAnchor = styled(Anchor)`
+  width: 100%;
+  padding: 1rem;
+`;
 
 const PostSummaryWrapper = styled(Flex)`
   border: 1px ${({ theme }) => theme.palette.border} solid;
@@ -77,7 +86,6 @@ const PostSummaryCategory = styled(Text)`
 `;
 
 const PostSummaryThumbnail = styled.img`
-  max-width: 40%;
-  min-width: 40%;
+  width: 100%;
   border-radius: 6px;
 `;
