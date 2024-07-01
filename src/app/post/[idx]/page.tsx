@@ -28,8 +28,17 @@ export default function PostDetailPage() {
   }
 
   return (
-    <Flex style={{ flexDirection: "column", alignItems: "center" }}>
-      <Flex style={{ maxWidth: "768px", flexDirection: "column" }}>
+    <Flex
+      style={{
+        width: "100%",
+        padding: "0 2rem",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <Flex
+        style={{ width: "100%", maxWidth: "768px", flexDirection: "column" }}
+      >
         <PostTitle
           content={targetPost.title}
           createdAt={targetPost.createdAt}
