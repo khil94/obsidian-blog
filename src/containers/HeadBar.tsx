@@ -42,9 +42,9 @@ export default function HeadBar({ category, onSelect }: IProp) {
       style={{
         margin: "1rem ",
         flexDirection: "row",
-        alignItems: "flex-start",
+        alignItems: "center",
         justifyContent: "flex-start",
-        width: "100%",
+        width: "80%",
         gap: "1rem",
       }}
     >
@@ -74,7 +74,7 @@ const HeadBarWrapper = styled(Flex)`
   }
   overflow: auto;
   top: 1rem;
-  width: 70%;
+  padding-bottom: 1rem;
   &::-webkit-scrollbar {
     height: 0.5rem;
     background-color: ${({ theme }) => theme.palette.border};

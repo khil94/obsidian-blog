@@ -104,7 +104,8 @@ export default function Home() {
 }
 
 const HomePageWrapper = styled(Flex)`
-  width: 1280px;
+  max-width: 1280px;
+  width: 100%;
 `;
 
 const CustomTag = styled(Tag)`
