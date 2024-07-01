@@ -14,6 +14,7 @@ export default function PostList({ postList }: IProp) {
         maxWidth: "850px",
         alignItems: "center",
         flexDirection: "column",
+        width: "100%",
       }}
     >
       {postList.length !== 0 ? (

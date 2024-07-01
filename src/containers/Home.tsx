@@ -93,6 +93,7 @@ export default function Home() {
           justifyContent: "center",
           flexDirection: "row",
           gap: "2rem",
+          width: "100%",
         }}
       >
         <SideBar onSelect={handleSelectCategory} category={category} />
