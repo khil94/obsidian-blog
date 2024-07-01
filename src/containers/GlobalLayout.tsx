@@ -23,6 +23,7 @@ export default function GlobalLayout({
             flexDirection: "column",
             position: "relative",
             paddingBottom: "60px",
+            alignItems: "center",
           }}
         >
           <Navbar />
@@ -30,6 +31,8 @@ export default function GlobalLayout({
             style={{
               justifyContent: "center",
               alignContent: "center",
+              maxWidth: "1280px",
+              width: "100%",
             }}
           >
             <Suspense>{children}</Suspense>

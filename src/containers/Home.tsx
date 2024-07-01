@@ -52,7 +52,7 @@ export default function Home() {
   }, [tag, category]);
 
   return (
-    <HomePageWrapper
+    <Flex
       style={{
         flexDirection: "column",
         alignItems: "center",
@@ -100,14 +100,9 @@ export default function Home() {
 
         <PostList postList={postList} />
       </Flex>
-    </HomePageWrapper>
+    </Flex>
   );
 }
-
-const HomePageWrapper = styled(Flex)`
-  max-width: 1280px;
-  width: 100%;
-`;
 
 const CustomTag = styled(Tag)`
   background-color: ${({ theme }) => theme.palette.background1};
