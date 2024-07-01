@@ -6,6 +6,7 @@ import StyleProvider from "@/style/StyleProvider";
 import { Suspense } from "react";
 import { Provider } from "react-redux";
 import { styled } from "styled-components";
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 export default function GlobalLayout({
@@ -17,7 +18,12 @@ export default function GlobalLayout({
     <Provider store={themeStore}>
       <StyleProvider>
         <GlobalLayoutWrapper
-          style={{ height: "100vh", flexDirection: "column" }}
+          style={{
+            minHeight: "100vh",
+            flexDirection: "column",
+            position: "relative",
+            paddingBottom: "60px",
+          }}
         >
           <Navbar />
           <Flex
@@ -28,6 +34,7 @@ export default function GlobalLayout({
           >
             <Suspense>{children}</Suspense>
           </Flex>
+          <Footer />
         </GlobalLayoutWrapper>
       </StyleProvider>
     </Provider>
