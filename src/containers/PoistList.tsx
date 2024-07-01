@@ -13,7 +13,6 @@ export default function PostList({ postList }: IProp) {
       style={{
         maxWidth: "580px",
         alignItems: "center",
-        padding: "1rem 0",
         flexDirection: "column",
       }}
     >
