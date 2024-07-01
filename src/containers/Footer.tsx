@@ -27,4 +27,5 @@ export default function Footer() {
 
 const FooterWrapper = styled(Flex)`
   background-color: ${({ theme }) => theme.palette.background1};
+  border-top: 1px solid ${({ theme }) => theme.palette.border};
 `;
