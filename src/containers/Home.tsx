@@ -7,7 +7,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import HeadBar from "./HeadBar";
-import PostList from "./PoistList";
+import PostList from "./PostList";
 import SideBar from "./SideBar";
 
 export default function Home() {
