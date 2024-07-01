@@ -44,7 +44,7 @@ export default function HeadBar({ category, onSelect }: IProp) {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "flex-start",
-        width: "80%",
+        width: "100%",
         gap: "1rem",
       }}
     >
@@ -69,7 +69,7 @@ export default function HeadBar({ category, onSelect }: IProp) {
 
 const HeadBarWrapper = styled(Flex)`
   display: none;
-  ${({ theme }) => theme.device.laptop} {
+  ${({ theme }) => theme.device.tablet} {
     display: flex;
   }
   overflow: auto;

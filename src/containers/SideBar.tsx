@@ -71,7 +71,7 @@ export default function SideBar({ category, onSelect }: IProp) {
 }
 
 const SidebarWrapper = styled(Flex)`
-  ${({ theme }) => theme.device.laptop} {
+  ${({ theme }) => theme.device.tablet} {
     display: none;
   }
   position: sticky;
