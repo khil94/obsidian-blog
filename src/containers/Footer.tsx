@@ -1,3 +1,4 @@
+import Anchor from "@/components/Anchor";
 import Flex from "@/components/Flex";
 import { useThemeSelector } from "@/store/useThemeSelector";
 import { styled } from "styled-components";
@@ -19,8 +20,12 @@ export default function Footer() {
       }}
       tagName="footer"
     >
-      <Github fill={theme === "dark" ? "white" : "black"} />
-      <Mail fill={theme === "dark" ? "white" : "black"} />
+      <Anchor href={"https://github.com/khil94"}>
+        <Github fill={theme === "dark" ? "white" : "black"} />
+      </Anchor>
+      <Anchor href={"mailto:khilkhil@naver.com"}>
+        <Mail fill={theme === "dark" ? "white" : "black"} />
+      </Anchor>
     </FooterWrapper>
   );
 }
