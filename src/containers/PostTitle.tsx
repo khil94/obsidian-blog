@@ -30,7 +30,7 @@ export default function PostTitle({
         style={{
           wordBreak: "keep-all",
           fontSize: "3.5rem",
-          lineHeight: "1",
+          lineHeight: "1.3",
           margin: "2rem 0",
         }}
       >
