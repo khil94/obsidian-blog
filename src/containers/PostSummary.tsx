@@ -32,7 +32,16 @@ export default function PostSummary({
           borderRadius: "8px",
         }}
       >
-        <PostSummaryThumbnail src={thumbnail} alt="thumbnail" />
+        <Flex
+          style={{
+            width: "100%",
+            maxHeight: "300px",
+            justifyContent: "center",
+            overflow: "hidden",
+          }}
+        >
+          <PostSummaryThumbnail src={thumbnail} alt="thumbnail" />
+        </Flex>
         <Flex
           style={{
             width: "100%",
@@ -87,5 +96,6 @@ const PostSummaryCategory = styled(Text)`
 
 const PostSummaryThumbnail = styled.img`
   width: 100%;
+  height: 100%;
   border-radius: 6px;
 `;
