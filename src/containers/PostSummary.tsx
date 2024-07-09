@@ -35,9 +35,8 @@ export default function PostSummary({
         <Flex
           style={{
             width: "100%",
-            maxHeight: "300px",
+            height: "300px",
             justifyContent: "center",
-            overflow: "hidden",
           }}
         >
           <PostSummaryThumbnail src={thumbnail} alt="thumbnail" />
@@ -97,5 +96,6 @@ const PostSummaryCategory = styled(Text)`
 const PostSummaryThumbnail = styled.img`
   width: 100%;
   height: 100%;
+  object-fit: scale-down;
   border-radius: 6px;
 `;
