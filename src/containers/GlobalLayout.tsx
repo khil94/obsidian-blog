@@ -31,7 +31,7 @@ export default function GlobalLayout({
             style={{
               justifyContent: "center",
               alignContent: "center",
-              maxWidth: "1280px",
+              maxWidth: "768px",
               width: "100%",
             }}
           >

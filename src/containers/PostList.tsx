@@ -11,7 +11,6 @@ export default function PostList({ postList }: IProp) {
   return (
     <Flex
       style={{
-        maxWidth: "850px",
         alignItems: "center",
         flexDirection: "column",
         width: "100%",
