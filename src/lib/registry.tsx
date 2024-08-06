@@ -10,9 +10,9 @@ export default function StyledComponentsRegistry({
   children: React.ReactNode;
 }) {
   const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet());
-  const styles = styledComponentsStyleSheet.getStyleElement();
 
   useServerInsertedHTML(() => {
+    const styles = styledComponentsStyleSheet.getStyleElement();
     styledComponentsStyleSheet.instance.clearTag();
     return <>{styles}</>;
   });
