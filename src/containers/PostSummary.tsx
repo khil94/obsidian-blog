@@ -8,7 +8,7 @@ import { styled } from "styled-components";
 interface IProp {
   title: string;
   description: string;
-  thumbnail?: string;
+  thumbnail: string;
   url: string;
   date: string;
   category: string;
@@ -34,12 +34,10 @@ export default function PostSummary({
       >
         <Flex
           style={{
-            width: "100%",
-            height: "300px",
             justifyContent: "center",
           }}
         >
-          <PostSummaryThumbnail src={thumbnail} alt="thumbnail" />
+          <PostSummaryThumbnail height={300} src={thumbnail} alt="thumbnail" />
         </Flex>
         <Flex
           style={{
@@ -94,8 +92,7 @@ const PostSummaryCategory = styled(Text)`
 `;
 
 const PostSummaryThumbnail = styled.img`
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
   object-fit: scale-down;
   border-radius: 6px;
 `;

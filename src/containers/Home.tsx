@@ -56,6 +56,8 @@ export default function Home() {
       style={{
         flexDirection: "column",
         alignItems: "center",
+        width: "100%",
+        padding: "0 24px",
       }}
     >
       <Flex

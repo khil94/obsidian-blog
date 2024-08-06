@@ -31,7 +31,7 @@ export default function PostList({ postList }: IProp) {
           );
         })
       ) : (
-        <Flex style={{ minWidth: "36rem", padding: "2.4rem" }}>
+        <Flex style={{ width: "100%" }}>
           <Text>게시물이 없습니다.</Text>
         </Flex>
       )}
