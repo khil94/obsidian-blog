@@ -47,7 +47,7 @@ const PostDetailWrapper = styled.div`
   code:not([data-language]) {
     background-color: ${({ theme }) => theme.palette.background2};
     border-radius: 6px;
-    padding: 24px;
+    padding: 6px;
     color: ${({ theme }) => theme.palette.main};
   }
   pre {
