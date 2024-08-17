@@ -11,7 +11,6 @@ interface IProps {
 
 export default function StyleProvider({ children }: IProps) {
   const { theme } = useThemeSelector((theme) => theme.theme);
-  console.log(theme);
   const targetTheme = theme === "dark" ? darkTheme : lightTheme;
   const targetPalette = { ...targetTheme, ...palette };
   return (
