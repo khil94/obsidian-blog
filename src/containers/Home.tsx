@@ -14,18 +14,24 @@ export default function Home() {
   const params = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-
-  const [postList, setPostList] = useState(allPosts);
   const [category, setCategory] = useState("전체");
-  const tag = params.get("tag");
 
   const getPostListByCategory = () => {
+    let temp = [];
     if (category === "전체") {
-      return allPosts;
+      temp = allPosts;
     } else {
-      return PostListByCategory[category];
+      temp = PostListByCategory[category];
     }
+    return temp.sort((a, b) => {
+      const aa = new Date(a.createdAt);
+      const bb = new Date(b.createdAt);
+      return aa.getDate() - bb.getDate();
+    });
   };
+
+  const [postList, setPostList] = useState(getPostListByCategory());
+  const tag = params.get("tag");
 
   const setPostListByCategory = () => {
     setPostList(getPostListByCategory());
