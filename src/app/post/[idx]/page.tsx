@@ -6,10 +6,13 @@ import NextPostCard from "@/containers/NextPostCard";
 import PostDetail from "@/containers/PostDetail";
 import PostTitle from "@/containers/PostTitle";
 import { allPosts } from "@/contentlayer/generated";
-import { useParams } from "next/navigation";
 
-export default function PostDetailPage() {
-  const params = useParams();
+export default function PostDetailPage({
+  params,
+}: {
+  params: { idx: string };
+}) {
+  // const params = useParams();
   const idx = allPosts.findIndex(
     (v) => v.id === decodeURIComponent(params.idx as string)
   );
