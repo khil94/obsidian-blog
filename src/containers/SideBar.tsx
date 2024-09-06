@@ -36,7 +36,6 @@ export default function SideBar({ category, onSelect }: IProp) {
       onClick={(e: React.MouseEvent) => {
         const target = e.target as HTMLElement;
         if (target.className.includes("category-btn")) {
-          console.log(target.innerHTML);
           onSelect(target.innerHTML);
         }
       }}
