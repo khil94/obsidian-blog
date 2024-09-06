@@ -2,6 +2,7 @@ import GlobalLayout from "@/containers/GlobalLayout";
 import StyledComponentsRegistry from "@/lib/registry";
 import { Metadata } from "next";
 import { Noto_Serif_KR } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -22,8 +23,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  function initTheme() {
+    const cookieTheme = cookies().get("theme");
+    if (cookieTheme) {
+      return cookieTheme.value;
+    } else {
+      return "";
+    }
+  }
+  const theme = initTheme();
   return (
-    <html lang="ko">
+    <html data-theme={theme} lang="ko">
       <body className={font.className}>
         <StyledComponentsRegistry>
           <GlobalLayout>{children}</GlobalLayout>
