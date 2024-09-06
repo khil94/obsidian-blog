@@ -3,7 +3,7 @@ export function dateToYYYYMMDD(date: string) {
 
   return `${newDate.getFullYear()}년 ${makeZeroNumber(
     newDate.getMonth()
-  )}월 ${makeZeroNumber(newDate.getDay())}일`;
+  )}월 ${makeZeroNumber(newDate.getDate())}일`;
 }
 
 export function makeZeroNumber(target: number) {
