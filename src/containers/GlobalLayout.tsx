@@ -1,8 +1,9 @@
 "use client";
 
 import Flex from "@/components/Flex";
-import { themeStore } from "@/store";
+import { createThemeStore } from "@/store";
 import StyleProvider from "@/style/StyleProvider";
+import { ITheme } from "@/style/theme";
 import { Suspense } from "react";
 import { Provider } from "react-redux";
 import { styled } from "styled-components";
@@ -11,11 +12,13 @@ import Navbar from "./Navbar";
 
 export default function GlobalLayout({
   children,
+  initialTheme,
 }: {
   children: React.ReactNode;
+  initialTheme: ITheme;
 }) {
   return (
-    <Provider store={themeStore}>
+    <Provider store={createThemeStore({ theme: initialTheme })}>
       <StyleProvider>
         <GlobalLayoutWrapper
           style={{

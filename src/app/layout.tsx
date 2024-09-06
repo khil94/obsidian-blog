@@ -1,5 +1,6 @@
 import GlobalLayout from "@/containers/GlobalLayout";
 import StyledComponentsRegistry from "@/lib/registry";
+import { ITheme } from "@/style/theme";
 import { Metadata } from "next";
 import { Noto_Serif_KR } from "next/font/google";
 import { cookies } from "next/headers";
@@ -33,10 +34,10 @@ export default function RootLayout({
   }
   const theme = initTheme();
   return (
-    <html data-theme={theme} lang="ko">
+    <html lang="ko">
       <body className={font.className}>
         <StyledComponentsRegistry>
-          <GlobalLayout>{children}</GlobalLayout>
+          <GlobalLayout initialTheme={theme as ITheme}>{children}</GlobalLayout>
         </StyledComponentsRegistry>
       </body>
     </html>

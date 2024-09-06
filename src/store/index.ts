@@ -5,26 +5,28 @@ export type IThemeState = {
   theme: ITheme;
 };
 
-const initialState = {
-  theme: "light",
-} as IThemeState;
-
-const themeSlice = createSlice({
-  name: "theme",
-  initialState: initialState,
-  reducers: {
-    changeTheme(state, action) {
-      state.theme = action.payload;
+const createThemeSlice = (initialState: IThemeState) =>
+  createSlice({
+    name: "theme",
+    initialState,
+    reducers: {
+      changeTheme(state, action) {
+        state.theme = action.payload;
+      },
     },
-  },
-});
+  });
 
-export const { changeTheme } = themeSlice.actions;
+export function createThemeStore(initialTheme: IThemeState) {
+  const themeSlice = createThemeSlice(initialTheme);
 
-export const themeStore = configureStore({
-  reducer: {
-    theme: themeSlice.reducer,
-  },
-});
+  return configureStore({
+    reducer: {
+      theme: themeSlice.reducer,
+    },
+  });
+}
 
-export type ThemeRootState = ReturnType<typeof themeStore.getState>;
+export type ThemeStore = ReturnType<typeof createThemeStore>;
+export type ThemeRootState = ReturnType<ThemeStore["getState"]>;
+
+export const { changeTheme } = createThemeSlice({ theme: "light" }).actions;

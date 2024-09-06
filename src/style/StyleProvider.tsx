@@ -1,3 +1,4 @@
+import { ThemeRootState } from "@/store";
 import { useThemeSelector } from "@/store/useThemeSelector";
 import { ReactNode } from "react";
 import { ThemeProvider } from "styled-components";
@@ -10,7 +11,7 @@ interface IProps {
 }
 
 export default function StyleProvider({ children }: IProps) {
-  const { theme } = useThemeSelector((theme) => theme.theme);
+  const { theme } = useThemeSelector((theme: ThemeRootState) => theme.theme);
   const targetTheme = theme === "dark" ? darkTheme : lightTheme;
   const targetPalette = { ...targetTheme, ...palette };
   return (
