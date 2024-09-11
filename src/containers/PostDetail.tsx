@@ -49,11 +49,11 @@ const PostDetailWrapper = styled.div`
     border-radius: 6px;
     padding: 6px;
     color: ${({ theme }) => theme.palette.main};
+    word-break: break-all;
   }
   pre {
     width: 100%;
     margin: 1.5rem 0;
-    word-break: break-all;
     overflow: auto;
     border-radius: 5px;
     white-space: pre-line;
