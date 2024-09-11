@@ -4,7 +4,6 @@ import Flex from "@/components/Flex";
 import { createThemeStore } from "@/store";
 import StyleProvider from "@/style/StyleProvider";
 import { ITheme } from "@/style/theme";
-import { Suspense } from "react";
 import { Provider } from "react-redux";
 import { styled } from "styled-components";
 import Footer from "./Footer";
@@ -22,10 +21,10 @@ export default function GlobalLayout({
       <StyleProvider>
         <GlobalLayoutWrapper
           style={{
-            minHeight: "100vh",
+            minHeight: "100%",
+            height: "fit-content",
             flexDirection: "column",
             position: "relative",
-            paddingBottom: "60px",
             alignItems: "center",
           }}
         >
@@ -36,9 +35,10 @@ export default function GlobalLayout({
               alignContent: "center",
               maxWidth: "768px",
               width: "100%",
+              height: "100%",
             }}
           >
-            <Suspense>{children}</Suspense>
+            {children}
           </Flex>
           <Footer />
         </GlobalLayoutWrapper>

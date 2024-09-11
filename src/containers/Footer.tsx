@@ -10,12 +10,11 @@ export default function Footer() {
   return (
     <FooterWrapper
       style={{
-        height: "60px",
+        height: "4rem",
         width: "100%",
         justifyContent: "center",
         alignItems: "center",
         gap: "2rem",
-        position: "absolute",
         bottom: "0",
       }}
       tagName="footer"

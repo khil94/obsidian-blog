@@ -5,7 +5,13 @@ import Loading from "@/components/Loading";
 
 export default function MainLoading() {
   return (
-    <Flex>
+    <Flex
+      style={{
+        height: "calc(100vh - 9rem)",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Loading />
     </Flex>
   );
