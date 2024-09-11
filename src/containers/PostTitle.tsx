@@ -46,7 +46,7 @@ export default function PostTitle({
 
       <Flex
         style={{
-          margin: "1rem auto",
+          margin: "2rem auto",
           width: "100%",
           alignItems: "center",
           justifyContent: "space-between",
