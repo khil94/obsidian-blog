@@ -1,3 +1,3 @@
 export default function Loading() {
-  return <img src="/spinner.vg" width={50} height={50} />;
+  return <img src="/spinner.svg" width={50} height={50} />;
 }
