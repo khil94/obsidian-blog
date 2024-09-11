@@ -56,7 +56,6 @@ const PostDetailWrapper = styled.div`
     margin: 1.5rem 0;
     overflow: auto;
     border-radius: 5px;
-    white-space: pre-line;
 
     &::-webkit-scrollbar {
       width: 100%;
