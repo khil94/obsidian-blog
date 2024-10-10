@@ -26,7 +26,7 @@ export default function Home() {
     return temp.sort((a, b) => {
       const aa = new Date(a.createdAt);
       const bb = new Date(b.createdAt);
-      return aa.getDate() - bb.getDate();
+      return bb.getTime() - aa.getTime();
     });
   };
 
