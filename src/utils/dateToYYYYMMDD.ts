@@ -7,5 +7,5 @@ export function dateToYYYYMMDD(date: string) {
 }
 
 export function makeZeroNumber(target: number) {
-  return `${target > 10 ? target : "0" + target}`;
+  return `${target >= 10 ? target : "0" + target}`;
 }
