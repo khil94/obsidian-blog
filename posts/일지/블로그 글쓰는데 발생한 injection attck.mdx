@@ -16,10 +16,10 @@ thumbnail: /thumbnails/bugs.webp
 
 블로그가 먹통이 나게 되었다. 출력된 에러 문구를 살펴보니 다음과 같았다. 
 
-```j
+```javascript
 import react__reactServerComponentMdx from './React__React Server Component.mdx.json' assert { type: 'json' }
 `import typescript__couldNotFindAModuleNameMdx from './typescript__Could not find a module 'name'.mdx.json'` assert { type: 'json' }
-		   ^
+				^
 Error: 
   × Expected ';', got 'name'
 
@@ -31,7 +31,13 @@ Error:
 <br/>
 하지만 에러 메세지를 천천히 다시 읽어보니 원인을 알게 되었다. 
 
+```javascript
+import typescript__couldNotFindAModuleNameMdx from './typescript__Could not find a module 'name'.mdx.json'
 ```
-`import typescript__couldNotFindAModuleNameMdx from './typescript__Could not find a module 'name'.mdx.json'`
-```
-중요한 건 문구가 아니라 이 텍스트 그 자체였다. 
+중요한 건 문구가 아니라 이 텍스트 그 자체였다. name에서의 색상변화가 보이는가? 
+### **그렇다!** 
+바로 포스트의 이름에 들어있는 `'name'`이라는 문구의 single quote가 마치 injection attack 처럼 동작되고 있던 것이다! 
+<br/>
+이는 contentlayer가 mdx파일을 해석하여 json파일로 변환할 때, single quote를 기반으로 해석하고 파일을 만들고 있었기 떄문에 발생한 문제이자 post의 제목이 파일의 이름으로 되고 있었던 것이 그 문제였다! 
+<br/>
+우선 제목을 back quote로 바꾸어 급한 불은 껐지만, 정말 생각지도 못한곳에서 이런식의 에러가 발생한 것에서 서비스라는 것이 정말로 많은 것을 고려해야 하는 것임을 새삼 깨닫게 되는 
