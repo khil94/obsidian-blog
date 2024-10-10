@@ -72,6 +72,9 @@ const PostDetailWrapper = styled.div`
     code {
       white-space: pre-wrap;
     }
+    code:not([data-language]) {
+      padding: 24px;
+    }
   }
 
   ol,
