@@ -68,6 +68,10 @@ const PostDetailWrapper = styled.div`
       border-radius: 0 0 5px 5px;
       background-color: ${({ theme }) => theme.palette.main};
     }
+
+    code {
+      white-space: pre-wrap;
+    }
   }
 
   ol,
