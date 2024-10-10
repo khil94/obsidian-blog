@@ -1,0 +1,28 @@
+---
+title: 블로그 글쓰는데 발생한 injection attck
+description: 블로그 글 작성중 발생한 버그와 injection attck
+tags:
+  - bugs
+createdAt: 2024-10-11
+thumbnail: /thumbnails/bugs.webp
+---
+이번에 블로그 글을 쓰면서 독특한 버그를 발견하게 되었다. 
+
+글을 쓰는 중, 제목을 다음과 같이 적게 되었는데
+
+```null
+`Could not find a module 'name'`
+```
+
+블로그가 먹통이 나게 되었다. 출력된 에러문구를 살펴보니 다음과 같았다. 
+
+```node
+import react__reactServerComponentMdx from './React__React Server Component.mdx.json' assert { type: 'json' }
+import typescript__couldNotFindAModuleNameMdx from './typescript__Could not find a module 'name'.mdx.json' assert { type: 'json' }
+		   ^
+Error: 
+  × Expected ';', got 'name'
+
+```
+
+처음에는 mdx파일의 변환이 제대로 이루어지지 않은 줄 알았다. 내가 어떤 이유로 property를 누라
