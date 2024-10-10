@@ -28,4 +28,6 @@ Could not find a declaration file for module 'react-fullpage'
 
 ### .d.ts 파일
 
-typescript에서 존재하는 .d.ts는 바로 type을 정의하기 위해 존재하는 파일이다. 일반적으로 typescript를 지원하는 라이브러리는 
+typescript에서 존재하는 .d.ts는 바로 type을 정의하기 위해 존재하는 파일이다. 일례로, typescript를 지원하는 라이브러리를 살펴보면 index.d.ts 따위의 파일이 존재하는 것을 확인할 수 있다. 혹은 node_moudles에 존재하는 @types 폴더도 확인할 수 있다. (바로 이 폴더가 타입선언만 포함된 모듈들이다.)
+
+하지만 내 경우처럼 typescript를 전혀 지원하지 않는 라이브러리가 간혹 존재한다. 이럴때는 사용자가 직접 @type폴더를 만들고 그 안에 타입을 선언할 수 있다. 
