@@ -17,7 +17,15 @@ Could not find a declaration file for module 'react-fullpage'
 직역해보자면, 모듈 'react-fullpage'에 대한 선언을 찾을 수 없다는 뜻이다. 그리고 다음과 같은 안내 문구가 출력되었다.
 
 ```
-```null
- Try `npm i --save-dev @types/react-full-page` if it exists or add a new declaration (.d.ts) file containing `declare module 'react-full-page';`
+ `Try `npm i --save-dev @types/react-fullpage` if it exists or add a new declaration (.d.ts) file containing `declare module 'react-fullpage'`;`
 ```
-```
+문구에서는 @types/react-full-page를 install하라고 하고 있지만, 이를 수행해도 에러는 고쳐지지 않았다. 때문에 다른 제안인 새로운 선언파일(.d.ts)를 만들고자 하였다. 
+
+하지만 애초에 이러한 에러는 왜 출력된 것일까? 처음 문구를 보면 'react-full-page'라는 모듈에 대한 선언이 존재하지 않는다고 하고 있다. 
+
+원인은 바로 해당 라이브러리가 typescript를 지원하지 않기 때문이었다. 때문에 @types/library-name으로 typescript에 대한 선언파일을 install할 것을 제안한 것이었다. 하지만 내가 사용하려고 한 위 라이브러리는 오래된 라이브러리라 typescript를 지원하지 않았고 직접 파일을 작성하기로 하였다.
+
+
+### .d.ts 파일
+
+typescript에서 존재하는 .d.ts는 바로 type을 정의하기 위해 존재하는 파일이다. 일반적으로 typescript를 지원하는 라이브러리는 
