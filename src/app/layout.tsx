@@ -1,6 +1,7 @@
 import GlobalLayout from "@/containers/GlobalLayout";
 import StyledComponentsRegistry from "@/lib/registry";
 import { ITheme } from "@/style/theme";
+import { Analytics } from "@vercel/analytics/next";
 import { Metadata } from "next";
 import { Noto_Serif_KR } from "next/font/google";
 import { cookies } from "next/headers";
@@ -36,6 +37,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={font.className}>
+        <Analytics />
         <StyledComponentsRegistry>
           <GlobalLayout initialTheme={theme as ITheme}>{children}</GlobalLayout>
         </StyledComponentsRegistry>
