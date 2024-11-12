@@ -10,8 +10,8 @@ Javascript에서의 스코프에 대해서 알아보고자 합니다.
 
 ## Scope
 그 전에, 우선 스코프란 무엇일까요? 스코프(scope)란 단어는 범위를 뜻합니다. Javascript에서 쓰이는 스코프의 범위란 변수에 접근할 수 있는 범위를 의미합니다.    
-Javascript에서 쓰이는 Scope는 크게 3가지 유형의 Scope가 있습니다.
-바로 `블록 스코프`, `함수 스코프`, `전역 스코프` 가 있습니다.
+Javascript에서 쓰이는 Scope는 크게 2가지 유형의 Scope가 있습니다.
+바로 `블록 스코프`, `함수 스코프` 가 있습니다.
 
 ## 함수 스코프
 
@@ -69,4 +69,23 @@ v()가 실행된 함수 내부에서 i를 탐색
 	let value = 123;
 }
 console.log(value) // reference error
+```
+Javascript에서는 let과 const로 선언된 변수는 블록 스코프를 가지게 됩니다. 따라서 위의 예시 코드를 let으로 선언하여 사용하게 되면
+```javascript
+if(true){
+    let value = 123;
+}
+console.log(value); // 123
+
+var temp = [];
+for(var i = 0; i<5; i++){
+	temp.push(function(){
+		return i;
+	});
+}
+
+console.log(i) // 5
+temp.forEach(v=>{
+	console.log(v()); // 5 5 5 5 5
+})
 ```
