@@ -1,6 +1,6 @@
 ---
-title: Scope in Javascript
-description: javascript에서 쓰이는 스코프에 대해서 알아본다
+title: 함수 스코프와 블록 스코프
+description: javascript의 함수 스코프와 블록 스코프에 대해서 알아본다
 tags:
   - javascript
 createdAt: 2024-11-12
@@ -75,17 +75,18 @@ Javascript에서는 let과 const로 선언된 변수는 블록 스코프를 가�
 if(true){
     let value = 123;
 }
-console.log(value); // 123
+console.log(value); // reference error
 
-var temp = [];
-for(var i = 0; i<5; i++){
+let temp = [];
+for(let i = 0; i<5; i++){
 	temp.push(function(){
 		return i;
 	});
 }
 
-console.log(i) // 5
+console.log(i) // reference error
 temp.forEach(v=>{
-	console.log(v()); // 5 5 5 5 5
+	console.log(v()); // 0,1,2,3,4
 })
 ```
+위와같은 결과를 얻을 수 있게 됩니다. 

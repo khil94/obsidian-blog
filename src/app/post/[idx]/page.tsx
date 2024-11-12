@@ -21,17 +21,6 @@ export default function PostDetailPage({
   const prevPost = allPosts[idx - 1];
   const nextPost = allPosts[idx + 1];
 
-  var temp = [];
-  for (var i = 0; i < 5; i++) {
-    temp.push(function test() {
-      console.dir(test);
-      console.log(i);
-    });
-  }
-  temp.forEach((v) => {
-    v();
-  });
-
   function SetPostCard({ direction }: { direction: "prev" | "next" }) {
     const temp = direction === "prev" ? prevPost : nextPost;
     return temp ? (
