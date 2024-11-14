@@ -30,6 +30,29 @@ export default function PostDetailPage({
     );
   }
 
+  function highlight(
+    strings: TemplateStringsArray,
+    ...values: (string | number)[]
+  ): JSX.Element {
+    return strings.reduce((acc, str, i) => {
+      console.log(acc, str, i, values[i]);
+      return (
+        <>
+          {acc}
+          {str}
+          {i < values.length && (
+            <span style={{ color: "blue", fontWeight: "bold" }}>
+              {values[i]}
+            </span>
+          )}
+        </>
+      );
+    }, <></>);
+  }
+  const userName = "test";
+  const userName2 = "test2";
+  const greeting = highlight`Hello, ${userName}! Welcome to our ${userName2} site.`;
+
   return (
     <Flex
       style={{
@@ -39,6 +62,7 @@ export default function PostDetailPage({
         alignItems: "center",
       }}
     >
+      <>{greeting}</>
       <Flex style={{ width: "100%", flexDirection: "column" }}>
         <PostTitle
           content={targetPost.title}
