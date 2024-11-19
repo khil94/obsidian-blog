@@ -76,6 +76,20 @@ const PostDetailWrapper = styled.div`
       padding: 24px;
     }
   }
+  table {
+    td {
+      padding: 1rem;
+    }
+  }
+  table,
+  th,
+  td {
+    border: 1px solid ${({ theme }) => theme.palette.border};
+    border-collapse: collapse;
+  }
+  hr {
+    margin: 2rem 0;
+  }
 
   ol,
   ul {
