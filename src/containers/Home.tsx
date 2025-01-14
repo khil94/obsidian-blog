@@ -2,8 +2,6 @@ import Flex from "@/components/Flex";
 import Tag from "@/components/Tag";
 import { allPosts } from "@/contentlayer/generated";
 import { PostListByCategory } from "@/utils/category";
-import { PostListByTag, tagList } from "@/utils/tag";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import HeadBar from "./HeadBar";
@@ -11,9 +9,6 @@ import PostList from "./PostList";
 import SideBar from "./SideBar";
 
 export default function Home() {
-  const params = useSearchParams();
-  const router = useRouter();
-  const pathname = usePathname();
   const [category, setCategory] = useState("전체");
 
   const getPostListByCategory = () => {
@@ -21,7 +16,7 @@ export default function Home() {
     if (category === "전체") {
       temp = allPosts;
     } else {
-      temp = PostListByCategory[category];
+      temp = PostListByCategory(allPosts, category);
     }
     return temp.sort((a, b) => {
       const aa = new Date(a.createdAt);
@@ -31,7 +26,6 @@ export default function Home() {
   };
 
   const [postList, setPostList] = useState(getPostListByCategory());
-  const tag = params.get("tag");
 
   const setPostListByCategory = () => {
     setPostList(getPostListByCategory());
@@ -42,20 +36,9 @@ export default function Home() {
     setCategory(v);
   };
 
-  const handleClickTag = (target: string) => {
-    const temp = target === "" ? pathname : `${pathname}?tag=${target}`;
-    router.push(temp);
-  };
-
   useEffect(() => {
-    if (tag && tag !== "") {
-      const target =
-        category === "전체" ? allPosts : PostListByCategory[category];
-      setPostList(target.filter((v) => PostListByTag[tag].includes(v)));
-    } else {
-      setPostListByCategory();
-    }
-  }, [tag, category]);
+    setPostListByCategory();
+  }, [category]);
 
   return (
     <Flex
@@ -66,7 +49,7 @@ export default function Home() {
         padding: "0 24px",
       }}
     >
-      <Flex
+      {/* <Flex
         style={{
           width: "50%",
           flexWrap: "wrap",
@@ -92,7 +75,7 @@ export default function Home() {
             />
           );
         })}
-      </Flex>
+      </Flex> */}
       <HeadBar category={category} onSelect={handleSelectCategory} />
 
       <Flex
@@ -102,6 +85,7 @@ export default function Home() {
           flexDirection: "row",
           gap: "2rem",
           width: "100%",
+          margin: "3rem auto",
         }}
       >
         <SideBar onSelect={handleSelectCategory} category={category} />
