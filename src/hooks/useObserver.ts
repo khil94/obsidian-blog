@@ -32,7 +32,6 @@ const useObserver = (targetElement: HTMLElement | null) => {
     );
 
     const headingEls = targetElement.querySelectorAll("h2, h3");
-    console.log("heading ELS", headingEls);
     headingEls.forEach((e) => {
       observer.observe(e);
     });
@@ -41,10 +40,6 @@ const useObserver = (targetElement: HTMLElement | null) => {
       observer.disconnect();
     };
   }, [targetElement]);
-
-  useEffect(() => {
-    console.log("current id has been changed!", currentId);
-  }, [currentId]);
 
   return { currentId, headings, handleClickHead };
 };

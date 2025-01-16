@@ -19,7 +19,6 @@ export default function PostList({ postList }: IProp) {
 
   const [page, setPage] = useState(0);
   const [totalPage, setTotalPage] = useState(makeTotalPage(postList.length));
-  console.log(totalPage, postList.length);
 
   const handleChangePage = (target: number) => {
     window.scrollTo(0, 0);
