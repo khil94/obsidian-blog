@@ -39,11 +39,15 @@ export default function PostDetailPage({
         width: "100%",
         padding: "0 2rem",
         flexDirection: "row",
-        alignItems: "center",
       }}
     >
       <DetailWrapper detailEl={detailEl} />
-      <Flex style={{ width: "100%", flexDirection: "column" }}>
+      <Flex
+        style={{
+          width: "100%",
+          flexDirection: "column",
+        }}
+      >
         <PostTitle
           content={targetPost.title}
           createdAt={targetPost.createdAt}

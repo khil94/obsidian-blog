@@ -13,9 +13,11 @@ export default function DetailWrapper({ detailEl }: Prop) {
     <Flex
       style={{
         flexDirection: "column",
-        position: "fixed",
-        top: "5rem",
-        left: 0,
+        position: "sticky",
+        paddingTop: "4.6rem",
+        top: "4.6rem",
+        right: 0,
+        height: "fit-content",
       }}
     >
       {headings.map((el) => {
@@ -35,8 +37,13 @@ export default function DetailWrapper({ detailEl }: Prop) {
 
 const TOC = styled.pre`
   cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  ${({ theme }) => theme.device.laptop} {
+    display: none;
+  }
   &.current {
     font-weight: bold;
-    font-size: 2rem;
+    transform: scale(1.2);
   }
 `;

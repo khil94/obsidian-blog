@@ -22,7 +22,7 @@ export default function GlobalLayout({
         <GlobalLayoutWrapper
           style={{
             minHeight: "100%",
-            height: "fit-content",
+            height: "100vh",
             flexDirection: "column",
             position: "relative",
             alignItems: "center",
@@ -33,9 +33,9 @@ export default function GlobalLayout({
             style={{
               justifyContent: "center",
               alignContent: "center",
-              maxWidth: "768px",
+              maxWidth: "1440px",
               width: "100%",
-              height: "100%",
+              height: "auto",
             }}
           >
             {children}
