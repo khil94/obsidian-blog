@@ -7,6 +7,7 @@ import PostDetail from "@/containers/PostDetail";
 import PostTitle from "@/containers/PostTitle";
 import { allPosts } from "@/contentlayer/generated";
 import { useState } from "react";
+import DetailWrapper from "./components/detailWrapper";
 
 export default function PostDetailPage({
   params,
@@ -41,7 +42,7 @@ export default function PostDetailPage({
         alignItems: "center",
       }}
     >
-      {/* <DetailWrapper detailEl={detailEl} /> */}
+      <DetailWrapper detailEl={detailEl} />
       <Flex style={{ width: "100%", flexDirection: "column" }}>
         <PostTitle
           content={targetPost.title}
