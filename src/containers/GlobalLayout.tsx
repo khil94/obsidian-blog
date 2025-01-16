@@ -21,7 +21,7 @@ export default function GlobalLayout({
       <StyleProvider>
         <GlobalLayoutWrapper
           style={{
-            minHeight: "100%",
+            minHeight: "fit-content",
             height: "100vh",
             flexDirection: "column",
             position: "relative",
@@ -50,5 +50,4 @@ export default function GlobalLayout({
 const GlobalLayoutWrapper = styled(Flex)`
   background-color: ${({ theme }) => theme.palette.background1};
   color: ${({ theme }) => theme.palette.text1};
-  overflow-x: hidden;
 `;
