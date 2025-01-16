@@ -44,12 +44,12 @@ export default function Home() {
     <Flex
       style={{
         flexDirection: "column",
-        alignItems: "center",
         width: "100%",
         padding: "0 24px",
       }}
     >
-      {/* <Flex
+      {/* Tag Wrapper 
+        <Flex
         style={{
           width: "50%",
           flexWrap: "wrap",
@@ -80,10 +80,8 @@ export default function Home() {
 
       <Flex
         style={{
-          height: "inherit",
           justifyContent: "center",
           flexDirection: "row",
-          gap: "2rem",
           width: "100%",
           margin: "3rem auto",
         }}

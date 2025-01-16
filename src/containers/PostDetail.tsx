@@ -32,6 +32,7 @@ export default function PostDetail({ code, detailRef }: Iprop) {
 }
 
 const PostDetailWrapper = styled.div`
+  width: 100%;
   background-color: ${({ theme }) => theme.palette.background1};
   color: ${({ theme }) => theme.palette.text1};
   h2,

@@ -41,7 +41,7 @@ export default function SideBar({ category, onSelect }: IProp) {
       }}
       style={{
         padding: "0 1rem",
-        margin: "1rem auto",
+        margin: "1rem",
         flexDirection: "column",
         gap: "1rem",
         minHeight: "30rem",

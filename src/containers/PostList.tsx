@@ -9,10 +9,9 @@ import PostSummary from "./PostSummary";
 interface IProp {
   postList: Post[];
 }
-
+const PAGE_SIZE = 5;
+const POST_SUMMARY_WIDTH = "640px";
 export default function PostList({ postList }: IProp) {
-  const PAGE_SIZE = 5;
-
   const makeTotalPage = (length: number) => {
     return Math.ceil(length / PAGE_SIZE);
   };
@@ -36,9 +35,10 @@ export default function PostList({ postList }: IProp) {
         alignItems: "center",
         flexDirection: "column",
         width: "100%",
+        maxWidth: "fit-content",
       }}
     >
-      <Flex
+      <SummaryWrapper
         style={{
           flexDirection: "column",
         }}
@@ -83,7 +83,7 @@ export default function PostList({ postList }: IProp) {
               );
             })}
         </Flex>
-      </Flex>
+      </SummaryWrapper>
     </Flex>
   );
 }
@@ -97,4 +97,11 @@ const PageBtn = styled(Button)`
     color: ${({ theme }) => theme.palette.white};
   }
   padding: 1rem;
+`;
+
+const SummaryWrapper = styled(Flex)`
+  width: ${POST_SUMMARY_WIDTH};
+  ${({ theme }) => theme.device.tablet} {
+    width: 100%;
+  }
 `;
