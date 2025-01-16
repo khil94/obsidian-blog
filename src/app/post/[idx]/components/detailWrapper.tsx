@@ -16,7 +16,9 @@ export default function DetailWrapper({ detailEl }: Prop) {
         position: "sticky",
         paddingTop: "4.6rem",
         top: "4.6rem",
+        marginRight: "4rem",
         right: 0,
+        textAlign: "left",
         height: "fit-content",
       }}
     >
@@ -38,6 +40,7 @@ export default function DetailWrapper({ detailEl }: Prop) {
 const TOC = styled.pre`
   cursor: pointer;
   font-size: 1rem;
+  min-width: 15rem;
   padding: 0;
   ${({ theme }) => theme.device.laptop} {
     display: none;
