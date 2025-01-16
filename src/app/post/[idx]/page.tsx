@@ -6,6 +6,7 @@ import NextPostCard from "@/containers/NextPostCard";
 import PostDetail from "@/containers/PostDetail";
 import PostTitle from "@/containers/PostTitle";
 import { allPosts } from "@/contentlayer/generated";
+import { deviceSize } from "@/style/device";
 import { useState } from "react";
 import DetailWrapper from "./components/detailWrapper";
 
@@ -39,12 +40,14 @@ export default function PostDetailPage({
         width: "100%",
         padding: "0 2rem",
         flexDirection: "row",
+        justifyContent: "center",
       }}
     >
       <DetailWrapper detailEl={detailEl} />
       <Flex
         style={{
           width: "100%",
+          maxWidth: deviceSize.tablet,
           flexDirection: "column",
         }}
       >

@@ -10,7 +10,7 @@ export default function DetailWrapper({ detailEl }: Prop) {
   const { currentId, headings, handleClickHead } = useObserver(detailEl);
 
   return (
-    <Flex
+    <Wrapper
       style={{
         flexDirection: "column",
         position: "sticky",
@@ -33,18 +33,22 @@ export default function DetailWrapper({ detailEl }: Prop) {
           </TOC>
         );
       })}
-    </Flex>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled(Flex)`
+  ${({ theme }) => theme.device.laptop} {
+    display: none;
+  }
+`;
 
 const TOC = styled.pre`
   cursor: pointer;
   font-size: 1rem;
   min-width: 15rem;
   padding: 0;
-  ${({ theme }) => theme.device.laptop} {
-    display: none;
-  }
+
   &.current {
     font-weight: bold;
     transform: scale(1.2);
