@@ -6,8 +6,7 @@ import NextPostCard from "@/containers/NextPostCard";
 import PostDetail from "@/containers/PostDetail";
 import PostTitle from "@/containers/PostTitle";
 import { allPosts } from "@/contentlayer/generated";
-import { getIntersectionObserver } from "@/utils/observer";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function PostDetailPage({
   params,
@@ -22,37 +21,6 @@ export default function PostDetailPage({
   const prevPost = allPosts[idx - 1];
   const nextPost = allPosts[idx + 1];
 
-  const [headingIds, setHeadingIds] = useState<string>("");
-  const [headingEls, setHeadingEls] = useState<Element[]>([]);
-
-  useEffect(() => {
-    const handleObserver = (entry: IntersectionObserverEntry) => {
-      setHeadingIds(entry.target.id);
-    };
-    const observer = getIntersectionObserver(handleObserver);
-    const headingElements = document.querySelectorAll("h2, h3");
-
-    headingElements.forEach((header) => {
-      observer.observe(header);
-    });
-    return () => {
-      headingElements.forEach((header) => {
-        observer.unobserve(header);
-      });
-    };
-  }, [headingEls]);
-
-  useEffect(() => {
-    if (typeof window !== undefined) {
-      const headings = document.querySelectorAll("h2, h3");
-      setHeadingEls(Array.from(headings));
-    }
-  }, []);
-
-  useEffect(() => {
-    console.log("heading Ids", headingIds);
-  }, [headingIds]);
-
   function SetPostCard({ direction }: { direction: "prev" | "next" }) {
     const temp = direction === "prev" ? prevPost : nextPost;
     return temp ? (
@@ -62,16 +30,18 @@ export default function PostDetailPage({
     );
   }
 
+  const [detailEl, setDetailEl] = useState<HTMLElement | null>(null);
+
   return (
     <Flex
       style={{
         width: "100%",
         padding: "0 2rem",
-        flexDirection: "column",
+        flexDirection: "row",
         alignItems: "center",
       }}
     >
-      <Flex>TEST</Flex>
+      {/* <DetailWrapper detailEl={detailEl} /> */}
       <Flex style={{ width: "100%", flexDirection: "column" }}>
         <PostTitle
           content={targetPost.title}
@@ -79,7 +49,7 @@ export default function PostDetailPage({
           tags={targetPost.tags}
           thumbnail={targetPost.thumbnail}
         />
-        <PostDetail code={targetPost.body.code} />
+        <PostDetail detailRef={setDetailEl} code={targetPost.body.code} />
         <Flex style={{ justifyContent: "space-between", gap: "1rem" }}>
           <SetPostCard direction="prev" />
           <SetPostCard direction="next" />

@@ -1,13 +1,13 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { styled } from "styled-components";
-
 interface Iprop {
   code: string;
+  detailRef: React.Ref<HTMLDivElement>;
 }
-export default function PostDetail({ code }: Iprop) {
+export default function PostDetail({ code, detailRef }: Iprop) {
   const Comp = useMDXComponent(code);
   return (
-    <PostDetailWrapper>
+    <PostDetailWrapper ref={detailRef}>
       <Comp
         components={{
           img: ({ src, alt, width, height }) => (
@@ -19,6 +19,12 @@ export default function PostDetail({ code }: Iprop) {
               loading="lazy"
             />
           ),
+          h2: ({ children }) => {
+            return <h2 id={children?.toString()}>{children}</h2>;
+          },
+          h3: ({ children }) => {
+            return <h3 id={children?.toString()}>{children}</h3>;
+          },
         }}
       />
     </PostDetailWrapper>

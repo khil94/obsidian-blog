@@ -31,7 +31,7 @@ export default function NextPostCard(props: IProp) {
         <Text style={{ fontWeight: "bold", fontSize: "0.9rem" }}>
           {props.direction === "prev" ? "이전글" : "다음글"}
         </Text>
-        <Text style={{ fontWeight: "bold", fontSize: "1rem" }} tagName="h2">
+        <Text style={{ fontWeight: "bold", fontSize: "1rem" }} tagName="p">
           {makeEllipsis(props.title, 19)}
         </Text>
       </Flex>
