@@ -6,11 +6,10 @@ const useObserver = (targetElement: HTMLElement | null) => {
 
   const handleClickHead = (id: string) => {
     const el = document.getElementById(id);
-
     if (!el) return;
 
     window.scrollTo({
-      top: el.offsetTop - 20,
+      top: el.offsetTop - 100,
       behavior: "smooth",
     });
   };
