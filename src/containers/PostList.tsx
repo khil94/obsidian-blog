@@ -11,6 +11,7 @@ interface IProp {
 }
 const PAGE_SIZE = 5;
 const POST_SUMMARY_WIDTH = "640px";
+
 export default function PostList({ postList }: IProp) {
   const makeTotalPage = (length: number) => {
     return Math.ceil(length / PAGE_SIZE);
@@ -27,6 +28,7 @@ export default function PostList({ postList }: IProp) {
 
   useEffect(() => {
     setTotalPage(makeTotalPage(postList.length));
+    setPage(0);
   }, [postList]);
 
   return (
