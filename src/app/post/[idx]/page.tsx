@@ -6,13 +6,14 @@ import NextPostCard from "@/containers/NextPostCard";
 import PostDetail from "@/containers/PostDetail";
 import PostTitle from "@/containers/PostTitle";
 import { allPosts } from "@/contentlayer/generated";
+import { getIntersectionObserver } from "@/utils/observer";
+import { useEffect, useState } from "react";
 
 export default function PostDetailPage({
   params,
 }: {
   params: { idx: string };
 }) {
-  // const params = useParams();
   const idx = allPosts.findIndex(
     (v) => v.id === decodeURIComponent(params.idx as string)
   );
@@ -20,6 +21,37 @@ export default function PostDetailPage({
 
   const prevPost = allPosts[idx - 1];
   const nextPost = allPosts[idx + 1];
+
+  const [headingIds, setHeadingIds] = useState<string>("");
+  const [headingEls, setHeadingEls] = useState<Element[]>([]);
+
+  useEffect(() => {
+    const handleObserver = (entry: IntersectionObserverEntry) => {
+      setHeadingIds(entry.target.id);
+    };
+    const observer = getIntersectionObserver(handleObserver);
+    const headingElements = document.querySelectorAll("h2, h3");
+
+    headingElements.forEach((header) => {
+      observer.observe(header);
+    });
+    return () => {
+      headingElements.forEach((header) => {
+        observer.unobserve(header);
+      });
+    };
+  }, [headingEls]);
+
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      const headings = document.querySelectorAll("h2, h3");
+      setHeadingEls(Array.from(headings));
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("heading Ids", headingIds);
+  }, [headingIds]);
 
   function SetPostCard({ direction }: { direction: "prev" | "next" }) {
     const temp = direction === "prev" ? prevPost : nextPost;
@@ -39,6 +71,7 @@ export default function PostDetailPage({
         alignItems: "center",
       }}
     >
+      <Flex>TEST</Flex>
       <Flex style={{ width: "100%", flexDirection: "column" }}>
         <PostTitle
           content={targetPost.title}
