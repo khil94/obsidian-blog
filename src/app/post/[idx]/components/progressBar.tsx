@@ -1,10 +1,8 @@
+import Flex from "@/components/Flex";
+import { palette } from "@/style/palette";
 import { useEffect, useState } from "react";
 
-interface Prop {
-  detailEl: HTMLElement | null;
-}
-
-export default function DetailWrapper({ detailEl }: Prop) {
+export default function ProgressBar() {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   const handleScroll = () => {
@@ -27,14 +25,14 @@ export default function DetailWrapper({ detailEl }: Prop) {
   }, []);
 
   return (
-    <div
+    <Flex
       style={{
         position: "fixed",
         top: 0,
         left: 0,
         width: `${scrollProgress}%`,
-        height: "4px",
-        backgroundColor: "#3498db",
+        height: ".4rem",
+        backgroundColor: palette.main,
         transition: "width 0.1s ease-out",
         zIndex: 9999,
       }}

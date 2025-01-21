@@ -9,6 +9,7 @@ import { allPosts } from "@/contentlayer/generated";
 import { deviceSize } from "@/style/device";
 import { useState } from "react";
 import DetailWrapper from "./components/detailWrapper";
+import ProgressBar from "./components/progressBar";
 
 export default function PostDetailPage({
   params,
@@ -43,6 +44,7 @@ export default function PostDetailPage({
         justifyContent: "center",
       }}
     >
+      <ProgressBar />
       <DetailWrapper detailEl={detailEl} />
       <Flex
         style={{
