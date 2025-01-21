@@ -78,6 +78,7 @@ export default function PostList({ postList }: IProp) {
                 <PageBtn
                   className={`${page === i ? "selected" : ""}`}
                   onClick={() => handleChangePage(i)}
+                  key={`btn-page-${i}`}
                 >
                   {i + 1}
                 </PageBtn>
