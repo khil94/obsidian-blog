@@ -29,7 +29,8 @@ javascript에서 쓰이는 Date 타입은 toISOString() 이라는 메소드를 �
 const KRoffset = date.getTimezoneOffset() * 60000;
 const dateOffset = new Date(date.getTime() - offset);
 
-console.log()
+console.log('ISOString : ', dateOffset.toISOString());
 // 한국 시간대에 맞게 직접 offset을 조정해준다.
 ```
 
+당연하지만, 이런 부분을 쉽게 구현하도록 도와주는 `moment.js` 등의 라이브러리를 사용해도 좋다. 중요한 것은 이 메소드를 사용하며 생길 수 있는 일을 인지하는 것이다.
