@@ -4,5 +4,18 @@ description: js의 Date의 메소드인 toISOStirng을 사용할 때 주의점�
 tags:
   - javascript
 createdAt: 2025-06-03
-thumbnail: /thumbnails/186bb3a426750da3f.png
+thumbnail: /thumbnails/javascript.png
 ---
+javascript에서 쓰이는 Date 타입은 toISOString() 이라는 메소드를 제공한다. 이 메소드는 단순화한 ISO 형식의 문자열을 반환한다. ( YYYY-MM-DDTHH:mm:ss.sssz)
+
+하지만 실제로 이 메소드를 써보면 하루 전 날짜의 시간을 반환하는 문제가 있다. 이는 어째서일까?
+
+## toISOString()
+
+[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString) 공식문서를 살펴보면 다음과 같이 설명하고 있다.
+
+```
+**`toISOString()`** 메서드는 단순화한 확장 ISO 형식([ISO 8601](https://ko.wikipedia.org/wiki/ISO_8601))의 문자열을 반환합니다. 반환값은 언제나 24글자 또는 27글자(각각 **`YYYY-MM-DDTHH:mm:ss.sssZ`** 또는 **`±YYYYYY-MM-DDTHH:mm:ss.sssZ`**)입니다.시간대는 언제나 UTC이며 접미어 `Z`로 표현합니다.
+```
+
+정확하게 말하자면, 언제나 zero UTC offset을 기반으로한 시간으로 반환한다는 뜻이다. 하지만 
