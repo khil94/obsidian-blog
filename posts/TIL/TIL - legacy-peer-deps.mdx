@@ -28,10 +28,11 @@ draft: true
 
 7버전 이후로는 에러처리되며, 두 선택지 중 하나를 선택할 수 있고, 그것이 --force와 --legacy-peer-deps이다. 
 #### --force
---force를 통해 설치를 하면, package-lock.json에 몇가지 다른 의존 버전들을 추가한다.
+--force를 통해 설치를 하면, 모든 충돌을 무시하고 최신 버전을 설치한다. 즉, peer dependencies 충돌을 무시하고 강제로 패키지를 설치한다. 때문에 의존성 버전 호환이 되지 않는 경우가 생길 수 있다.
 
 #### --legacy-peer-deps
-기존 방
+기존 방식대로 경고만 출력하고, 7이상 버전에 도입된 peer dependencies 검증을 비활성화 한다. 즉, 4-6 버전 처럼 peer dependencies 충돌만을 무시하고 설치한다. 
+
 ## 참고 자료
 
 - 참고한 자료가 있다면 링크를 남겨두는 것이 좋겠지.
