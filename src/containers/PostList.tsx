@@ -48,7 +48,9 @@ export default function PostList({ postList }: IProp) {
           postList
             .slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE)
             .map((v, i) => {
-              return (
+              return v.draft ? (
+                <></>
+              ) : (
                 <PostSummary
                   title={v.title}
                   description={v.description}
