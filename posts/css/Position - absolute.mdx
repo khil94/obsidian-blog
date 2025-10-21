@@ -13,7 +13,15 @@ draft: true
 
 ## 본론
 
-### Position
+### Position : absolute
+
+본론에 들어가기에 앞서, 우선 `position : absolute`의 정의를 확인하고자 한다.
+```md
+요소를 일반적인 문서 흐름에서 제거하고, 페이지 레이아웃에 공간도 배정하지 않습니다. 대신 가장 가까운 위치 지정 조상 요소에 대해 상대적으로 배치합니다. 단, 조상 중 위치 지정 요소가 없다면 초기 [컨테이닝 블록](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_display/Containing_block)을 기준으로 삼습니다. 최종 위치는 `top`, `right`, `bottom`, `left` 값이 지정합니다.
+
+[`z-index`](https://developer.mozilla.org/ko/docs/Web/CSS/z-index)의 값이 `auto`가 아니라면 새로운 [쌓임 맥락](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_positioned_layout/Stacking_context)을 생성합니다. 절대 위치 지정 요소의 바깥 여백은 서로 [상쇄](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing)되지 않습니다.
+```
+
 
 ### 소제목 2
 
