@@ -43,27 +43,15 @@ draft: true
 
 ```HTML
 <div style={{position:"fixed"}}>
-	<div class="content">
+	<div class="content" style={{position:"absolute"}}>
 		...
 	</div>
 </div>
 ```
-### Absolute와 overflow
+이 경우, 어디에 overflow를 할당해야 할 까?
 
-이 부분이 내가 겪은 문제 부분이고, 본격적으로 말하고 싶은 부분이다.
 
-```jsx
-<div
-	className={`absolute overflow-auto` 
-	onClick={e => { e.stopPropagation(); }} 
->
-	{children} 
-</div>
-```
 
-위 코드가 문제가 발생한 코드이다. 다소 생략을 했지만, children 부분에 컴포넌트가 들어가는 구조이다.  
-
-이 때, 부모요소에 overflow-auto가 걸려있는데, 내부 요소가 
 
 
 
