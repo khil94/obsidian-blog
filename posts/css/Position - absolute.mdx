@@ -39,16 +39,33 @@ draft: true
 때문에 부모 요소에 position : relative 를 선언해주는 것이 관례처럼 자리잡은 것이다.  
 만일 absolute가 의도한대로 동작하지 않는다면, 우선 확인해봐야 하는 부분이다.  
 
-또 중요하게 보아야 하는 것이, 페이지 레이아웃에 공간이 배정되지 않는 다는 점이다. 그렇다면 이런 경우를 생각해 볼 수 있겠다. modal을 만드는 경우, 주변 배경을 어둡게 하기 위한 배경 요소는 고정된 위치로 배치되어야 한다. 하지만 모달 내부가 너무 길어진 경우, overflow 값을 조절하고 싶어질 수 있다.
+또 중요하게 보아야 하는 것이, 페이지 레이아웃에 공간이 배정되지 않는 다는 점이다. 그렇다면 이런 경우를 생각해 볼 수 있겠다. 
 
 ```HTML
-<div style={{position:"fixed"}}>
-	<div class="content" style={{position:"absolute"}}>
-		...
+<!-- 배경요소 -->
+<div style="
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: red;
+      "> 
+	<!-- 모달 내부 컨텐츠 -->
+	<div style="
+          position: absolute;
+          width: 120px;
+          left: 50%;
+          top: 50%;
+          background-color: yellow;
+        ">
+		<!-- 컨텐츠... -->
 	</div>
 </div>
 ```
-이 경우, 어디에 overflow를 할당해야 할 까?
+간단한 modal을 만드는 경우로, 주변 배경을 어둡게 하기 위한 배경 요소는 고정된 위치로 배치되어야 한다. 하지만 모달 내부가 너무 길어진 경우, overflow 값을 조절하고 싶어질 수 있다. 내부 요소를 스크롤 하고 싶다면 어디서 overflow를 핸들링 해야 할 까?  
+
+당연하다면 당연하겠지만, 배경요소에 overflow를 두면 배경요소
 
 
 
