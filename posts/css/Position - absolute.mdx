@@ -34,7 +34,29 @@ draft: true
 
 >`position` **속성이 `absolute`**인 경우, 컨테이닝 블록은 `position` 속성 값이 `static`이 아닌(`fixed`, `absolute`, `relative`, `sticky`) 가장 가까운 조상의 내부 여백 영역입니다
 
-즉, absolute의 부모 요소는 반드시 relative여야 하는 것은 아니고, static 이 아닌 요소를 기준으로 배치된다. 또한, 부모 요소가 static인 경우 static이 아닌 요소를 만날 때 까지 추적해 올라간다. 기본적으로 요소는 position : static 이므로, 별도의 설정을 하지 않으면 
+즉, absolute의 부모 요소는 반드시 relative여야 하는 것은 아니고, static 이 아닌 요소를 기준으로 배치된다. 또한, 부모 요소가 static인 경우 static이 아닌 요소를 만날 때 까지 추적해 올라간다. 기본적으로 요소는 position : static 이므로, 별도의 설정을 하지 않으면 body 까지 거슬러 올라가 버린다.
+
+때문에 부모 요소에 position : relative 를 선언해주는 것이 관례처럼 자리잡은 것이다.  
+만일 absolute가 의도한대로 동작하지 않는다면, 우선 확인해봐야 하는 부분이다.  
+
+### Absolute와 overflow
+
+이 부분이 내가 겪은 문제 부분이고, 본격적으로 말하고 싶은 부분이다.
+
+```jsx
+<div
+	className={`absolute overflow-auto` 
+	onClick={e => { e.stopPropagation(); }} 
+>
+	{children} 
+</div>
+```
+
+위 코드가 문제가 발생한 코드이다. 다소 생략을 했지만, 
+
+
+
+
 
 ## 결론
 
