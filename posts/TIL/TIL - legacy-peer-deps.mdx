@@ -25,10 +25,13 @@ draft: true
 >--force로 재시도하여 충돌을 우회하거나 --legacy-peer-deps 명령으로 종속성을 완전히 무시할 수 있습니다. (이 동작은 버전 4-6과 유사합니다.)
 
 --legacy-peer-deps 관련 에러는 npm 7버전 이후로 나온 에러로, 기존에는 --legacy-peer-deps로 설치하는 것처럼 처리된 모양이다. 물론 경고는 표시되었지만, 오류 없이 설치했었다. 
+
+7버전 이후로는 에러처리되며, 두 선택지 중 하나를 선택할 수 있고, 그것이 --force와 --legacy-peer-deps이다. 
 #### --force
+--force를 통해 설치를 하면, package-lock.json에 몇가지 다른 의존 버전들을 추가한다.
 
-
-
+#### --legacy-peer-deps
+기존 방
 ## 참고 자료
 
 - 참고한 자료가 있다면 링크를 남겨두는 것이 좋겠지.
