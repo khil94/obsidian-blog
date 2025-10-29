@@ -1,0 +1,93 @@
+---
+title: Next.js TypeError Failed to parse URL from...
+description: next 사용 중 발생한 에러에 대해 기술한다.
+tags:
+  - next
+  - bugs
+createdAt: 2025-10-29
+thumbnail: /thumbnails/bugs.webp
+draft: true
+---
+## 서론
+
+next를 통해서 개발하던 도중 다음과 같은 문구를 만나게 됐다.
+
+```bash
+TypeError: Failed to parse URL from api/users/search?...
+```
+next의 `Route Handler`를 통해 api를 호출하던 도중 생긴 문제이다. 나는 다음과 같은 코드로 api를 호출하고 있었다.
+
+```tsx
+// api/lib/api.ts
+
+export async function apiGet<T>(url: string): Promise<T> {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`API ERROR : ${res.status}`);
+  return res.json();
+}
+
+export const API = {
+  async searchUser(username: string) {
+    return apiGet<UserResponse>(
+      `/api/users/search?username=${username}`
+    );
+  },
+};
+...
+
+// page.tsx
+...
+	const resp = await API.searchUser(username); // error
+	
+```
+`lib/api.ts`에서 API wrapper와 API 객체를 export하고 page에서 이를 사용하는 식이었다. 당연히 `api/users/search/route.ts`에서 해당 api를 정의하고 있었다. 
+
+그리고 이 에러의 가장 큰 문제가 있었는데....
+
+바로 **기존에 동작하던 코드**라는 점이었다.
+
+## 기존 방식
+
+기존에는 무엇이 달랐던 걸까? 바로 기존의 `page.tsx`는 **클라이언트 컴포넌트** 였다는 사실이다.
+
+```tsx
+// page.tsx
+...
+	useEffect(()=>{
+		const getUser = async()=>{
+			const resp = await API.searchUser(username);
+			...
+			};
+		getUser();
+		}
+	},[])
+```
+위 코드가 처음에 API를 호출하던 방식이었다. 하지만 `page`를 **서버 컴포넌트**로 바꾸면서 에러가 발생한 것이다.
+
+## 신규 방식
+
+```tsx
+export default async function Page({
+  params,
+}: {
+  params: { username: string };
+}){
+	const { username } = await params;
+	const resp = await API.searchUser(username); // error
+}
+```
+위 코드처럼 기존 코드를 서버 컴포넌트로 바꾸자 에러가 발생하였다. 
+
+## 분석
+
+처음에는 도저히 이유를 찾지 못했다. 하지만 이유를 알게 되니 너무나 당연한 이유였다. 이유는 바로 
+>서버 컴포넌트는 서버 환경에서 동작한다.
+
+였다! 
+
+
+
+
+## 참고 자료
+
+참고한 자료가 있다면 링크를 남겨두는 것이 좋겠지.
