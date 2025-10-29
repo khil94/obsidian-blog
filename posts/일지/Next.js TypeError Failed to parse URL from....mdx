@@ -6,7 +6,7 @@ tags:
   - bugs
 createdAt: 2025-10-29
 thumbnail: /thumbnails/bugs.webp
-draft: true
+draft: false
 ---
 ## 서론
 
@@ -162,12 +162,26 @@ export async function apiGet<T>(url: string): Promise<T> {
 	const host = headers().get("host");   
 	const protocol = process.env.NODE_ENV === "development" ? "http" : "https"; 
 	const res = await fetch(`${protocol}://${host}${url}`);   
-	if (!res.ok) throw new Error(`API ERROR : ${res.status}`);   return res.json(); }
+	if (!res.ok) throw new Error(`API ERROR : ${res.status}`);   
+	return res.json(); 
+}
 ```
 
 이렇게 하면 서버 렌더링 중에도 정확한 절대 URL로 API를 호출할 수 있다.
 
+---
 
+## 요약
+
+- React Server Component는 **Node.js 서버 환경에서 실행**된다.
+- 브라우저 컨텍스트(`window`, `host`, `localStorage`)는 존재하지 않는다.
+- Next.js에서는 `headers()`와 `cookies()`를 통해 요청 정보를 접근할 수 있다.
+- API 호출 시에는 **절대 URL을 지정하거나**, **요청 컨텍스트에서 host를 추출**해야 한다.
+
+---
 ## 참고 자료
 
 
+[# Next.js 13 에러 삽질기 - TypeError: Failed to parse URL from](https://jgjgill-blog.netlify.app/road/2023-12-28/)
+[# Next.js 공식문서](https://nextjs.org/docs/app/getting-started/server-and-client-components)
+[# React의 RSC, RCC에 대하여](https://funveloper.tistory.com/214)
