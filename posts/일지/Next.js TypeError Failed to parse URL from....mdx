@@ -119,8 +119,24 @@ React 18에서 등장한 React Server Component (이하 RSC )는 서버에서 �
 
 ## 결론
 
-따라서, Server Component 로 변경된 `page`에서는 클라이언트의 
+따라서, Server Component 로 변경된 `page`에서는 클라이언트의 실행 환경의 `host`명을 알 수 없기에, 요청 경로인 `/api/users/...`의 호스트를 알 수 없어서 생긴 오류인 것이다. 
+
+## 해결
+
+근본적으로 요청 API의 baseURL을 추가하는 것으로 해결하였다.
+
+```typescript
+export async function apiGet<T>(url: string): Promise<T> {
+  const API_BASE_URL = process.env.API_BASE_URL; // 추가
+  const res = await fetch(API_BASE_URL + url);
+  if (!res.ok) throw new Error(`API ERROR : ${res.status}`);
+  
+  return res.json();
+}
+```
+
+
 
 ## 참고 자료
 
-참고한 자료가 있다면 링크를 남겨두는 것이 좋겠지.
+
