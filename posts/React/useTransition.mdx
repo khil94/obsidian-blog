@@ -9,21 +9,63 @@ draft: true
 ---
 ## 서론
 
-여기에 글의 도입부를 작성해줘.
+React 애플리케이션이 커질수록 사용자 입력과 화면 갱신이 동시에 일어나는 경우가 많다.  
+이때 무거운 연산이나 렌더링이 포함되면, 클릭이나 입력 반응이 늦어지는 **UI 지연 문제**가 발생한다.  
+`useTransition`은 이런 상황에서 **“사용자 인터랙션의 즉시성”과 “화면 업데이트의 완전성”을 분리**해주는 React 18의 새로운 훅이다.  
+즉, **“급한 일과 덜 급한 일”을 구분해서 처리**할 수 있게 만든 도구다.
 
 ## 본론
 
-### 소제목 1
+### 1. 기본 개념
 
-본문 내용을 자유롭게 채워나가면 되네.
+`useTransition`은 **상태 업데이트를 “전환(transition)”으로 표시**하고,  
+이 전환 중에는 React가 **사용자 입력 처리 같은 더 중요한 작업을 우선시**할 수 있게 한다.
 
-### 소제목 2
+사용 예시는 다음과 같다:
 
-필요에 따라 소제목을 추가해서 사용하도록.
+```jsx
+import { useTransition, useState } from 'react';  
 
-## 결론
+function Search() {   
+	const [isPending, startTransition] = useTransition();   
+	const [query, setQuery] = useState('');    
+	
+	function handleChange(e) {     
+		const value = e.target.value;     
+		setQuery(value);     
+		startTransition(() => {       
+			// 무거운 필터링 연산 등       
+			filterResults(value);     
+		});   
+	}    
+	return (     
+		<>       
+			<input value={query} onChange={handleChange} />       
+			{isPending && <p>Loading...</p>}     
+		</>   
+	); 
+}
+```
 
-글을 마무리하는 내용을 여기에 작성하면 되겠군.
+### 2. 작동 원리
+
+`useTransition`은 **React의 스케줄링 계층**을 활용한다.  
+`startTransition` 안에서 일어나는 상태 변경은 **“비차단(non-blocking)”**으로 처리되며,  
+사용자가 입력을 계속할 수 있도록 **React가 우선순위를 낮춰 렌더링을 지연**시킨다.  
+따라서 사용자는 즉각적인 피드백을 받고,  
+React는 백그라운드에서 천천히 새 UI를 계산한다.
+
+### 3. `isPending`의 역할
+
+`isPending`은 현재 전환이 진행 중인지 알려준다.  
+이를 이용해 로딩 상태나 시각적 피드백을 제공할 수 있다.  
+예를 들어 “검색 중…”이나 “결과 업데이트 중” 같은 메시지를 띄워 사용자 혼란을 줄인다.
+
+### 4. 주의점
+
+- `useTransition`은 **UI 우선순위를 조정하는 도구일 뿐**, 성능 최적화 자체를 대신하지는 않는다.
+- 모든 상태 변경에 쓸 필요는 없으며, **사용자 입력 반응성을 해치지 않는 “급하지 않은” 업데이트**에만 사용해야 한다.
+- Suspense와 결합하면 **전환 중 로딩 UI를 자연스럽게 표시**할 수 있다.
 
 ## 참고 자료
 
