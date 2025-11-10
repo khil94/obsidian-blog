@@ -18,48 +18,63 @@ React 애플리케이션이 커질수록 사용자 입력과 화면 갱신이 �
 
 ### 1. 기본 개념
 
+`useTransition`은 간단히 말해 **상태 변경의 우선순위를 낮춰주는 훅**이다.  
+이 훅을 사용하면 React가 “이건 급한 일이 아니니까 나중에 처리해도 돼”라고 판단하게 만든다.
+
 `useTransition`은 **상태 업데이트를 “전환(transition)”으로 표시**하고,  
 이 전환 중에는 React가 **사용자 입력 처리 같은 더 중요한 작업을 우선시**할 수 있게 한다.
 
 사용 예시는 다음과 같다:
 
 ```jsx
-import { useTransition, useState } from 'react';  
+import { useTransition, useState } from 'react';
 
-function Search() {   
-	const [isPending, startTransition] = useTransition();   
-	const [query, setQuery] = useState('');    
-	
-	function handleChange(e) {     
-		const value = e.target.value;     
-		setQuery(value);     
-		startTransition(() => {       
-			// 무거운 필터링 연산 등       
-			filterResults(value);     
-		});   
-	}    
-	return (     
-		<>       
-			<input value={query} onChange={handleChange} />       
-			{isPending && <p>Loading...</p>}     
-		</>   
-	); 
+function SearchBox({ items }) {
+  const [isPending, startTransition] = useTransition();
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState(items);
+
+  function handleChange(e) {
+    const value = e.target.value;
+    setQuery(value);
+
+    // 급하지 않은 업데이트 (렌더링 비용이 큰 경우)
+    startTransition(() => {
+      const filtered = items.filter(item =>
+        item.toLowerCase().includes(value.toLowerCase())
+      );
+      setResults(filtered);
+    });
+  }
+
+  return (
+    <>
+      <input
+        value={query}
+        onChange={handleChange}
+        placeholder="검색어를 입력하세요"
+      />
+      {isPending && <p>검색 중...</p>}
+      <ul>
+        {results.map(r => (
+          <li key={r}>{r}</li>
+        ))}
+      </ul>
+    </>
+  );
 }
 ```
 
-### 2. 작동 원리
 
-`useTransition`은 **React의 스케줄링 계층**을 활용한다.  
-`startTransition` 안에서 일어나는 상태 변경은 **“비차단(non-blocking)”**으로 처리되며,  
-사용자가 입력을 계속할 수 있도록 **React가 우선순위를 낮춰 렌더링을 지연**시킨다.  
-따라서 사용자는 즉각적인 피드백을 받고,  
-React는 백그라운드에서 천천히 새 UI를 계산한다.
-
-### 3. `isPending`의 역할
+### 2. `isPending`의 역할
 
 `isPending`은 현재 전환이 진행 중인지 알려준다.  
 이를 이용해 로딩 상태나 시각적 피드백을 제공할 수 있다.  
 예를 들어 “검색 중…”이나 “결과 업데이트 중” 같은 메시지를 띄워 사용자 혼란을 줄인다.
+
+
+
+
 
 ### 4. 주의점
 
