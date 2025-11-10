@@ -3,6 +3,8 @@ title: Isomorphic Hooks
 description: Isomorphic 방법론에 대해서 알아본다
 tags:
   - TIL
+  - react
+  - javascript
 createdAt: 2024-04-01
 thumbnail: /thumbnails/til.png
 draft: true
@@ -57,8 +59,40 @@ export const useIsmorphicLayoutEffect = isClient() ? useLayoutEffect : useEffect
 
 ```
 
-위처럼 사용하면 끝이다. 
+위처럼 사용하면 끝이다. 즉 서버 환경을 판정하고 -> 환경에 맞는 값을 반환하면 된다...
 
+이렇게 끝내면 심심하니까 한 가지 예시를 더 적는다.
+
+### Ismorphic Storage
+```typescript
+class IsomorphicStorage {
+  constructor() {
+    this.store = new Map();
+  }
+  
+  getItem(key) {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem(key);
+    }
+    return this.store.get(key);
+  }
+  
+  setItem(key, value) {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(key, value);
+    } else {
+      this.store.set(key, value);
+    }
+  }
+}
+
+export const storage = new IsomorphicStorage();
+```
+
+결론적으로 SSR환경을 사용하고, Server component를 잘 활용할 생각이라면 Isomorphic 패턴에 대해서 유념하는 것이 좋겠다.
 ## 참고 자료
 
-- 참고한 자료가 있다면 링크를 남겨두는 것이 좋겠지.
+[usehooks-ts](https://usehooks-ts.com/react-hook/use-isomorphic-layout-effect)
+[Isomorphic : 서버와 클라이언트에서 모두 사용가능한 코드 만들기](https://velog.io/@hyojun99222/Isomorphic-%EC%84%9C%EB%B2%84%EC%99%80-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EC%97%90%EC%84%9C-%EB%AA%A8%EB%91%90-%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%EC%BD%94%EB%93%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0)
+
+
