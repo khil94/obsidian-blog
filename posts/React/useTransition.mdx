@@ -4,8 +4,8 @@ description: React의 useTransition에 대해서 알아본다.
 tags:
   - react
 createdAt: 2025-11-10
-thumbnail: /thumbnails/186bb3a426750da3f.png
-draft: true
+thumbnail: /thumbnails/react.png
+draft: false
 ---
 ## 서론
 
@@ -112,7 +112,6 @@ function ProfilePage({ userId }) {
 - `startTransition`으로 전환을 시작하면  
     React가 `Profile` 컴포넌트를 새로 불러오는 동안  
     `Suspense`의 fallback(`프로필 불러오는 중...`)이 표시된다.
-    
 - 전환이 완료되면 새 사용자 정보가 부드럽게 화면에 반영된다.
     
 
@@ -142,4 +141,8 @@ function ProfilePage({ userId }) {
 `useTransition`으로 그 간극을 매끄럽게 메워보자.
 ## 참고 자료
 
-참고한 자료가 있다면 링크를 남겨두는 것이 좋겠지.
+[useTransition - React](https://ko.react.dev/reference/react/useTransition)
+[Suspense와 useTransition](https://velog.io/@onedanbee/Suspense%EB%9E%80)
+
+
+</br>
