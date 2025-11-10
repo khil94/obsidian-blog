@@ -42,8 +42,22 @@ Isomorphic이란 '동형사상'이라는 뜻으로, 이곳에서는 *서버와 �
 
 ![](public/images/Pasted%20image%2020251110225537.png)
 
-server component는 서버에서 렌더링 되는 화면과 클라이언트 화면에서 렌더링 되는 화면이 다를 수 있기 때문에(hydrate) 사실상 제 역할을 하지 못하는 것이다.
+서버에는 DOM이 없기 때문에 useLayoutEffect는 DOM 레이아웃이 계산된 후에 실행 되는 훅이므로 서버에서는 의미없는 코드가 되기 때문이다. 
 
+서론이 길었는데, 결론은 `서버에서는 useEffect`를 `클라이언트에서는 useLayoutEffect`를 사용하게끔 하는 것이다. 
+
+```typescript 
+// isClient.ts
+export function isClient(){
+	return typeof window !== 'undefined';
+}
+
+// useIsomorphicLayoutEffect.ts
+export const useIsmorphicLayoutEffect = isClient() ? useLayoutEffect : useEffect;
+
+```
+
+위처럼 사용하면 끝이다. 
 
 ## 참고 자료
 
