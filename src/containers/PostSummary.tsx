@@ -86,7 +86,7 @@ const PostSummaryWrappingAnchor = styled(Anchor)`
 const PostSummaryWrapper = styled(Flex)`
   border: 1px ${({ theme }) => theme.palette.border} solid;
   &:hover {
-    transform: scale(1.05);
+    border: 1px solid ${({ theme }) => theme.palette.main};
   }
 `;
 
