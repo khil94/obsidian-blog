@@ -28,7 +28,9 @@ export default function PostTitle({
       <Text
         tagName="h1"
         style={{
+          width: "100%",
           wordBreak: "keep-all",
+          textAlign: "left",
           fontSize: "3.5rem",
           lineHeight: "1.3",
           margin: "2rem 0",
@@ -36,13 +38,6 @@ export default function PostTitle({
       >
         {content}
       </Text>
-      {thumbnail && (
-        <img
-          style={{ maxWidth: "80%", width: "100%" }}
-          src={`${thumbnail}`}
-          alt={thumbnail}
-        />
-      )}
 
       <Flex
         style={{
@@ -82,6 +77,13 @@ export default function PostTitle({
         </PostTagListWrapper>
         <Text>{dateToYYYYMMDD(createdAt)}</Text>
       </Flex>
+      {thumbnail && (
+        <img
+          style={{ maxWidth: "80%", width: "100%" }}
+          src={`${thumbnail}`}
+          alt={thumbnail}
+        />
+      )}
     </PostTitleWrapper>
   );
 }

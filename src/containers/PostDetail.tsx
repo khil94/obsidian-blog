@@ -59,6 +59,16 @@ const PostDetailWrapper = styled.div`
     color: ${({ theme }) => theme.palette.main};
     word-break: break-all;
   }
+  table {
+    margin: 1rem auto;
+    th {
+      padding: 0.4rem;
+    }
+  }
+  code {
+    margin: 0 0.5rem;
+  }
+
   pre {
     width: 100%;
     margin: 1.5rem 0;
@@ -119,6 +129,9 @@ const PostDetailWrapper = styled.div`
     color: ${({ theme }) => theme.palette.main};
     &:visited {
       color: ${({ theme }) => theme.palette.main};
+    }
+    &:hover {
+      text-decoration: underline;
     }
   }
   strong {

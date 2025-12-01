@@ -47,6 +47,7 @@ export default function Home() {
           flexDirection: "row",
           width: "100%",
           margin: "3rem auto",
+          gap: "0 5%",
         }}
       >
         <SideBar onSelect={handleSelectCategory} category={category} />
