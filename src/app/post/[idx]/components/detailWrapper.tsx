@@ -19,7 +19,7 @@ export default function DetailWrapper({ detailEl }: Prop) {
         top: "4.6rem",
         marginRight: "4rem",
         right: 0,
-        textAlign: "right",
+        textAlign: "left",
         height: "fit-content",
       }}
     >
@@ -32,7 +32,7 @@ export default function DetailWrapper({ detailEl }: Prop) {
             onClick={() => handleClickHead(target)}
             className={`${currentId === target ? "current" : ""}`}
           >
-            {`${target}${el.tagName === "H3" ? "    " : ""}`}
+            {`${el.tagName === "H3" ? "    " : ""}${target}`}
           </TOC>
         );
       })}
@@ -54,7 +54,7 @@ const TOC = styled.pre`
 
   &.current {
     font-weight: bold;
-    transform-origin: 100% 50%;
+    transform-origin: 0% 50%;
     transform: scale(1.2);
   }
 `;
