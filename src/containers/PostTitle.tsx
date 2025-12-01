@@ -38,7 +38,7 @@ export default function PostTitle({
       </Text>
       {thumbnail && (
         <img
-          style={{ maxWidth: "100%", width: "100%" }}
+          style={{ maxWidth: "80%", width: "100%" }}
           src={`${thumbnail}`}
           alt={thumbnail}
         />
