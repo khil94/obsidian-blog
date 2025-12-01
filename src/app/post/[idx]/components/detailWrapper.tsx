@@ -1,5 +1,6 @@
 import Flex from "@/components/Flex";
 import useObserver from "@/hooks/useObserver";
+import { getUniversalText } from "@/utils/getTextFromNode";
 import { styled } from "styled-components";
 
 interface Prop {
@@ -18,18 +19,19 @@ export default function DetailWrapper({ detailEl }: Prop) {
         top: "4.6rem",
         marginRight: "4rem",
         right: 0,
-        textAlign: "left",
+        textAlign: "right",
         height: "fit-content",
       }}
     >
       {headings.map((el) => {
+        const target = getUniversalText(el);
         return (
           <TOC
-            key={`key-of-${el.innerHTML}`}
-            onClick={() => handleClickHead(el.innerHTML)}
-            className={`${currentId === el.innerHTML ? "current" : ""}`}
+            key={`key-of-${target}`}
+            onClick={() => handleClickHead(target)}
+            className={`${currentId === target ? "current" : ""}`}
           >
-            {`${el.tagName === "H3" ? "\t" : ""}${el.innerHTML}`}
+            {`${target}${el.tagName === "H3" ? "\t" : ""}`}
           </TOC>
         );
       })}

@@ -1,4 +1,4 @@
-import { getTextFromReactNode } from "@/utils/getTextFromNode";
+import { getUniversalText } from "@/utils/getTextFromNode";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { styled } from "styled-components";
 interface Iprop {
@@ -21,10 +21,10 @@ export default function PostDetail({ code, detailRef }: Iprop) {
             />
           ),
           h2: ({ children }) => {
-            return <h2 id={getTextFromReactNode(children)}>{children}</h2>;
+            return <h2 id={getUniversalText(children)}>{children}</h2>;
           },
           h3: ({ children }) => {
-            return <h3 id={getTextFromReactNode(children)}>{children}</h3>;
+            return <h3 id={getUniversalText(children)}>{children}</h3>;
           },
         }}
       />
