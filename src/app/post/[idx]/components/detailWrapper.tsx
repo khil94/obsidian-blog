@@ -25,13 +25,14 @@ export default function DetailWrapper({ detailEl }: Prop) {
     >
       {headings.map((el) => {
         const target = getUniversalText(el);
+        console.log(el.innerHTML, el.tagName);
         return (
           <TOC
             key={`key-of-${target}`}
             onClick={() => handleClickHead(target)}
             className={`${currentId === target ? "current" : ""}`}
           >
-            {`${target}${el.tagName === "H3" ? "\t" : ""}`}
+            {`${target}${el.tagName === "H3" ? "    " : ""}`}
           </TOC>
         );
       })}
@@ -53,6 +54,7 @@ const TOC = styled.pre`
 
   &.current {
     font-weight: bold;
+    transform-origin: 100% 50%;
     transform: scale(1.2);
   }
 `;
