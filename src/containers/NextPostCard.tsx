@@ -48,4 +48,7 @@ const PostCardWrapper = styled(Anchor)`
   h2 {
     color: ${({ theme }) => theme.palette.main};
   }
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.palette.main};
+  }
 `;

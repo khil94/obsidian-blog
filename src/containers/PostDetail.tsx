@@ -35,6 +35,7 @@ const PostDetailWrapper = styled.div`
   width: 100%;
   background-color: ${({ theme }) => theme.palette.background1};
   color: ${({ theme }) => theme.palette.text1};
+  padding-bottom: 4rem;
   h2,
   h3 {
     font-weight: bold;
