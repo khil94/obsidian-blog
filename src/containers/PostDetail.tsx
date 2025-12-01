@@ -67,7 +67,7 @@ const PostDetailWrapper = styled.div`
     }
   }
   code {
-    margin: 0 0.5rem;
+    margin: 0 0.2rem;
   }
 
   pre {
@@ -112,7 +112,6 @@ const PostDetailWrapper = styled.div`
 
   ol,
   ul {
-    margin: 1rem 0;
     padding: 0.5rem;
     border-radius: 5px;
     background-color: ${({ theme }) => theme.palette.background1};
