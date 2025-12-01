@@ -95,7 +95,7 @@ export default function PostList({ postList }: IProp) {
               })}
           <PageBtn
             onClick={() => handleChangePage((idx + 1) * PAGE_SIZE)}
-            disabled={idx === Math.floor(totalPage / PAGE_SIZE)}
+            disabled={(idx + 1) * PAGE_SIZE > Math.floor(totalPage / PAGE_SIZE)}
           >
             {">"}
           </PageBtn>
