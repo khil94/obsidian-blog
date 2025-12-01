@@ -42,7 +42,6 @@ export default function Navbar({ children }: { children?: React.ReactNode }) {
           padding: "12px",
           color: "white",
           border: "none",
-          backgroundColor: "transparent",
         }}
         onClick={toggleTheme}
       >
@@ -57,7 +56,10 @@ export default function Navbar({ children }: { children?: React.ReactNode }) {
 }
 
 const ThemeBtn = styled(Button)`
-  background-color: ${({ theme }) => theme.palette.background1};
+  background-color: transparent;
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.main};
+  }
 `;
 
 const NavbarWrapper = styled(Flex)`
